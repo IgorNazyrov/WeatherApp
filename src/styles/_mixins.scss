@@ -1,0 +1,22 @@
+$breakpoints: (
+  'mobile': 375px,
+  'tablet': 768px, 
+  'laptop': 1024px, 
+);
+
+@mixin media($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint '#{$breakpoint}' not found in $breakpoints map.";
+  }
+}
+
+@mixin font($font-family, $font-size, $font-weight, $line-height) {
+  font-family: $font-family, sans-serif;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+}

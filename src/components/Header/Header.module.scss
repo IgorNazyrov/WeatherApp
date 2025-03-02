@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  
+  @media (tablet) { 
+    flex-direction: column;   
+    align-items: flex-start;  
+  }
+
+  .headerLogo {
+    user-select: none; 
+    -webkit-user-select: none; 
+    -ms-user-select: none;
+    @include font(Montserrat-Bold, 1.5rem, 700, 1.7)
+  }
+}

@@ -1,0 +1,124 @@
+@import '../../node_modules/normalize.css/normalize.css';
+@import './mixins.scss';
+
+:root {
+  font-family: "OpenSans-Regular", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: #ffffffde;
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  header {
+    padding: 1rem 0;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+
+    &.fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+  
+    // Логотип
+    .logo {
+      font-size: 1.5rem;      // Размер шрифта
+      font-weight: bold;       // Жирный шрифт
+      text-decoration: none;    // Убираем подчеркивание у ссылки
+      color: inherit;          // Наследуем цвет текста от родителя
+  
+      img {
+        display: block;      // Убираем отступы у картинки
+        max-width: 150px;    // Ограничиваем ширину картинки
+        height: auto;
+      }
+    }
+  
+    // Навигация
+    nav {
+      ul {
+        list-style: none;     // Убираем маркеры списка
+        margin: 0;            // Убираем отступы
+        padding: 0;            // Убираем отступы
+        display: flex;          // Используем Flexbox для горизонтального выравнивания
+  
+        li {
+          margin-left: 1rem; // Отступ между элементами меню
+  
+          &:first-child {
+            margin-left: 0;   // Убираем отступ у первого элемента
+          }
+  
+          a {
+            text-decoration: none; // Убираем подчеркивание у ссылки
+            color: inherit;        // Наследуем цвет текста от родителя
+            padding: 0.5rem 1rem;   // Отступы внутри ссылки
+            border-radius: 5px;     // Скругление углов
+  
+            &:hover {
+              background-color: rgba(0, 0, 0, 0.05); // Подсветка при наведении
+            }
+          }
+        }
+  
+        @media (max-width: 768px) { // Адаптивность для планшетов
+          flex-direction: column;   // Переключаем на вертикальное выравнивание
+          align-items: flex-start;  // Выравниваем по левому краю
+          margin-top: 1rem;         // Добавляем отступ сверху
+  
+          li {
+            margin-left: 0;       // Убираем отступ слева
+            margin-bottom: 0.5rem;  // Добавляем отступ снизу
+          }
+        }
+      }
+    }
+  
+    // Кнопка для мобильного меню (гамбургер)
+    .menu-toggle {
+      display: none;          // Скрываем кнопку по умолчанию
+      cursor: pointer;        // Меняем курсор при наведении
+  
+      @media (max-width: 768px) { // Показываем на планшетах и мобильных
+        display: block;
+      }
+  
+      span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: #333;
+        margin-bottom: 5px;
+  
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+.light-theme {
+  color: #333;
+  background-color: #f0f0f0;
+}
+
+.dark-theme {
+  color: #f0f0f0;
+  background-color: #333;
+}
+

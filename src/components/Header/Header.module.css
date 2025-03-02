@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (tablet) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+.container .headerLogo {
+  -moz-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}/*# sourceMappingURL=Header.module.css.map */
