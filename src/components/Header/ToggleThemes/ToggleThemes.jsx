@@ -22,7 +22,6 @@ export default function ToggleThemes () {
     }
   }, [theme])
 
-  const iconColor = theme === 'light' ? 'black' : 'white'
   return (
     <>
       {theme === 'light' ? (
