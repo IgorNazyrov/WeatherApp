@@ -4,21 +4,47 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-right: 2rem;
-  margin-left: 2rem;
-  
-  @media (mobile) { 
-    
+  // width: 95%;
+
+  @include media(mobile) {
+    flex-direction: row-reverse;
+    align-items: stretch; 
+    padding: 0rem 1rem;
   }
 
-  .headerLogo {
-    user-select: none; 
-    -webkit-user-select: none; 
-    -ms-user-select: none;
-    @include font(Montserrat-Bold, 1.5rem, 700, 1.7);
-    text-decoration: none;
-    color: inherit;
-    border-radius: 5px;
+  @include media(tablet) { 
+    width: 90%;
+    padding: 0rem 2rem;
+  }
+
+  @include media (laptop) {
+    width: 85%;
+    padding: 0rem 3rem;
+  }
+
+  .logoContainer {
+    display: flex;
+    align-items: center;
+
+    .blueIcon {
+      font-size: 20px;
+      display: inline-block;
+      fill: #006adb;
+    }
+
+    .svgContainer {
+      width: 2.5em;
+    }
+
+    .headerLogo {
+      user-select: none; 
+      -webkit-user-select: none; 
+      -ms-user-select: none;
+      @include font(Montserrat-Bold, 1.5rem, 700, 1.7);
+      text-decoration: none;
+      color: inherit;
+      border-radius: 5px;
+    }
   }
 
   .usersTools {
@@ -26,4 +52,5 @@
     justify-content: space-between;
     display: flex;
   }
+
 }

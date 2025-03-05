@@ -231,22 +231,23 @@ export default function WeatherIcon ({weather, fontSize}) {
     ),
     Default: (
       <svg
-        viewBox="0 0 24 24"
-        fill="none"
+      version="1.1"
+        id="_x32_"
         xmlns="http://www.w3.org/2000/svg"
-        stroke="#000000"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 512 512"
+        xmlSpace="preserve"
+        fill="#000000"
       >
         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
         <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
         <g id="SVGRepo_iconCarrier">
-          <g clipPath="url(#a)" fill="#f1c40f">
-            <path d="M12 0a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V1a1 1 0 0 1 1-1ZM0 12a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1ZM21 11a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2h-2ZM13 21a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0v-2ZM6.343 17.657a1 1 0 0 1 0 1.414L4.93 20.485a1 1 0 1 1-1.414-1.414l1.414-1.414a1 1 0 0 1 1.414 0ZM20.485 3.515a1 1 0 0 1 0 1.414l-1.414 1.414a1 1 0 1 1-1.414-1.414l1.414-1.414a1 1 0 0 1 1.414 0ZM3.515 3.515a1 1 0 0 1 1.414 0l1.414 1.414A1 1 0 1 1 4.93 6.343L3.515 4.93a1 1 0 0 1 0-1.414ZM17.657 17.657a1 1 0 0 1 1.414 0l1.414 1.414a1 1 0 1 1-1.414 1.414l-1.414-1.414a1 1 0 0 1 0-1.414ZM5 12a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z"></path>
+          <g>
+            <path
+              className={styles.blueIcon}
+              d="M416.296,232.076c-0.042,0-0.079,0.009-0.121,0.009c0.056-1.594,0.121-3.187,0.121-4.79 c0-76.646-62.131-138.771-138.763-138.771c-71.785,0-130.854,54.521-138.03,124.419c-10.066-3.113-20.755-4.791-31.842-4.791 C48.207,208.152,0,256.354,0,315.814c0,59.46,48.207,107.662,107.662,107.662h308.634c52.852,0,95.704-42.842,95.704-95.695 C512,274.919,469.148,232.076,416.296,232.076z"
+            ></path>
           </g>
-          <defs>
-            <clipPath id="a">
-              <path fill="#ffffff" d="M0 0h24v24H0z"></path>
-            </clipPath>
-          </defs>
         </g>
       </svg>
     ),

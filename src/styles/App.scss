@@ -23,75 +23,7 @@ body {
 
   header {
     padding: 1rem 0;
-    position: relative;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-      img {
-        display: block;
-        max-width: 150px;
-        height: auto;
-      }
-    }
-  
-    nav {
-      ul {
-        list-style: none;     // Убираем маркеры списка
-        margin: 0;            // Убираем отступы
-        padding: 0;            // Убираем отступы
-        display: flex;          // Используем Flexbox для горизонтального выравнивания
-  
-        li {
-          margin-left: 1rem; // Отступ между элементами меню
-  
-          &:first-child {
-            margin-left: 0;   // Убираем отступ у первого элемента
-          }
-  
-          a {
-            text-decoration: none; // Убираем подчеркивание у ссылки
-            color: inherit;        // Наследуем цвет текста от родителя
-            padding: 0.5rem 1rem;   // Отступы внутри ссылки
-            border-radius: 5px;     // Скругление углов
-  
-            &:hover {
-              background-color: rgba(0, 0, 0, 0.05); // Подсветка при наведении
-            }
-          }
-        }
-  
-        @media (max-width: 768px) { // Адаптивность для планшетов
-          flex-direction: column;   // Переключаем на вертикальное выравнивание
-          align-items: flex-start;  // Выравниваем по левому краю
-          margin-top: 1rem;         // Добавляем отступ сверху
-  
-          li {
-            margin-left: 0;       // Убираем отступ слева
-            margin-bottom: 0.5rem;  // Добавляем отступ снизу
-          }
-        }
-      }
-    }
-  
-    // Кнопка для мобильного меню (гамбургер)
-    .menu-toggle {
-      display: none;          // Скрываем кнопку по умолчанию
-      cursor: pointer;        // Меняем курсор при наведении
-  
-      @media (max-width: 768px) { // Показываем на планшетах и мобильных
-        display: block;
-      }
-  
-      span {
-        display: block;
-        width: 25px;
-        height: 3px;
-        background-color: #333;
-        margin-bottom: 5px;
-  
-        &:last-child {
-          margin-bottom: 0;
-        }
-      }
     }
   }
 

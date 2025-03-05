@@ -1,8 +1,8 @@
 .blueIcon {
-  font-size: 2em; /* Или любое другое значение по умолчанию */
+  font-size: 2em;
   display: inline-block;
-  width: 1em;      /* Важно!  Ширина = fontSize */
-  height: 1em;     /* Важно!  Высота = fontSize */
+  width: 2em;
+  height: 2em;
   border: 1px solid red;
   fill: #006adb;
 }
