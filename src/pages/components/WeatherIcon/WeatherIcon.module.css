@@ -1,0 +1,14 @@
+.blueIcon {
+  font-size: 2em;
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  border: 1px solid red;
+  fill: #006adb;
+}
+
+.blueIcon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

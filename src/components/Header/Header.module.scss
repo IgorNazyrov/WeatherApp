@@ -1,56 +1,77 @@
 @import '../../styles/mixins.scss';
 
+
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  // width: 95%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0rem 10px;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  grid-template-rows: 1fr 1fr;
 
-  @include media(mobile) {
-    flex-direction: row-reverse;
-    align-items: stretch; 
-    padding: 0rem 1rem;
-  }
-
-  @include media(tablet) { 
-    width: 90%;
-    padding: 0rem 2rem;
-  }
-
-  @include media (laptop) {
-    width: 85%;
-    padding: 0rem 3rem;
-  }
-
-  .logoContainer {
+  @include media('tablet') { 
+    padding: 0rem 40px;
     display: flex;
     align-items: center;
-
-    .blueIcon {
-      font-size: 20px;
-      display: inline-block;
-      fill: #006adb;
-    }
-
-    .svgContainer {
-      width: 2.5em;
-    }
-
-    .headerLogo {
-      user-select: none; 
-      -webkit-user-select: none; 
-      -ms-user-select: none;
-      @include font(Montserrat-Bold, 1.5rem, 700, 1.7);
-      text-decoration: none;
-      color: inherit;
-      border-radius: 5px;
-    }
-  }
-
-  .usersTools {
-    margin-right: 2rem;
     justify-content: space-between;
-    display: flex;
   }
+    
+  @include media('laptop') {
+    padding: 0rem 70px;
+  }
+    
+    .logoContainer {
+      grid-row: 1 / 2;
+      grid-column: 1 / 2;
+      align-items: center;
+      text-decoration: none;
+      
+      @include media('tablet') {
+        display: flex;
+      }
 
+      .svgContainer {
+        display: none;
+
+        @include media('tablet') {
+        position: relative;
+        top: 4px;
+        width: 2.5em;
+        margin-right: 8px;
+        display: inline;
+      } 
+
+        .blueIcon {
+            font-size: 20px;
+            display: inline-block;
+            fill: #006adb;
+          }
+
+          .darkBlueIcon {
+            fill: #3c99fd;
+          }
+        }
+        
+      .headerLogo {
+        user-select: none; 
+        -webkit-user-select: none; 
+        -ms-user-select: none;
+        color: #006adb;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+      }
+
+      .headerDarkLogo {
+        color: #f0f0f0;
+      }
+  }
+  
+  .usersTools {
+
+    @include media('tablet') {
+      align-items: center;
+      justify-content: space-between;
+      display: flex;
+    }
+  }
+  
 }

@@ -1,34 +1,21 @@
 import { useState, useEffect } from "react";
 import Moon from "../../../Icons/Moon/Moon";
 import styles from "../../../Icons/Moon/Moon.module.css";
+import { useContext } from "react";
+import { ThemeContext } from "../../ThemeContext";
+import './ToggleThemes.module.css'
 
 export default function ToggleThemes () {
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('theme') || 'light'
-  })
+  const {theme, toggleTheme} = useContext(ThemeContext)
 
-  const toggle = () => {
-    setTheme((prevTheme) => prevTheme === 'light' ? 'dark' : 'light' )
-  }
-
-  useEffect(() => {
-    localStorage.setItem('theme', theme)
-    if (theme === 'light') {
-      document.documentElement.classList.add('light-theme')
-      document.documentElement.classList.remove('dark-theme')
-    } else {
-      document.documentElement.classList.add('dark-theme')
-      document.documentElement.classList.remove('light-theme')
-    }
-  }, [theme])
 
   return (
     <>
       {theme === 'light' ? (
-        <Moon alt="Иконка тёмной Луны" onClick={toggle} style={{cursor: 'pointer'}}/>
+        <Moon alt="Иконка тёмной Луны" onClick={toggleTheme} style={{cursor: 'pointer'}}/>
       ) : (
-        <Moon alt="Иконка жёлтой Луны" className={styles.moonDarkTheme} onClick={toggle} style={{cursor: 'pointer'}}/>
+        <Moon alt="Иконка жёлтой Луны" className={styles.moonDarkTheme} onClick={toggleTheme} style={{cursor: 'pointer'}}/>
       )}
     </>
   )
-}
+} 

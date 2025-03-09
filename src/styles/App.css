@@ -35,10 +35,62 @@
 
 body {
   transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: OpenSans-Medium, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.6;
 }
-body header {
-  padding: 1rem 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+body h1 {
+  font-family: Montserrat-Bold, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.7;
+}
+body h2 {
+  font-family: Montserrat-Bold, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+@media (min-width: 768px) {
+  body {
+    font-family: OpenSans-Medium, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+  body h1 {
+    font-family: Montserrat-Bold, sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.7;
+  }
+  body h2 {
+    font-family: Montserrat-Bold, sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+}
+@media (min-width: 1024px) {
+  body {
+    font-family: OpenSans-Medium, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+  body h1 {
+    font-family: Montserrat-Bold, sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.7;
+  }
+  body h2 {
+    font-family: Montserrat-Bold, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.5;
+  }
 }
 
 .light-theme {

@@ -2,7 +2,7 @@ import { useContext } from "react"
 import styles from './SearchBar.module.css'
 import { CityContext } from "../../CityContext"
 
-export default function SearchBar ({className}) {
+export default function SearchBar () {
   const {textCity, setTextCity} = useContext(CityContext)
 
   const content = useContext[CityContext]
@@ -11,7 +11,7 @@ export default function SearchBar ({className}) {
 
   return (
     <>
-      <input type="text" value={textCity} onChange={(e) => setTextCity(e.target.value)} className={`${styles.searchInput} ${className}`} placeholder="Поиск города..."/>
+      <input type="text" value={textCity} onChange={(e) => setTextCity(e.target.value)} className={styles.searchInput} placeholder="Поиск города..."/>
     </>
   )
 }

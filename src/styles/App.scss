@@ -1,4 +1,4 @@
-@import '../../node_modules/normalize.css/normalize.css';
+@import '../../node_modules/normalize.css/normalize.css'; 
 @import './mixins.scss';
 @import './fonts.scss';
 
@@ -20,12 +20,40 @@
 
 body {
   transition: background-color 0.3s ease, color 0.3s ease;
+  @include font(OpenSans-Medium, 1rem, 500, 1.6);
 
-  header {
-    padding: 1rem 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  h1 {
+    @include font(Montserrat-Bold, 1.2rem, 700, 1.7);
+  }
+
+  h2 {
+    @include font(Montserrat-Bold, 1.1rem, 700, 1.5);
+  }
+
+  @include media('tablet') { 
+    @include font(OpenSans-Medium, 1.1rem, 500, 1.6);
+
+    h1 {
+      @include font(Montserrat-Bold, 1.4rem, 700, 1.7);
+    }
+
+    h2 {
+      @include font(Montserrat-Bold, 1.3rem, 700, 1.5)
     }
   }
+
+  @include media('laptop') {
+    @include font(OpenSans-Medium, 1.1rem, 500, 1.6);
+
+    h1 {
+      @include font(Montserrat-Bold, 1.6rem, 700, 1.7);
+    }
+
+    h2 {
+      @include font(Montserrat-Bold, 1.5rem, 700, 1.5)
+    }
+  }
+}
 
 .light-theme {
   color: #333;

@@ -4,11 +4,13 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home/Home'
 import { TemperatureProvider } from './components/TemperatureContext'
 import { CityProvider } from './components/CityContext'
+import { ThemeProvider } from './components/ThemeContext'
 
 function App() {
 
   return (
     <>
+    <ThemeProvider>
     <CityProvider>
     <TemperatureProvider>
       <Routes>
@@ -16,6 +18,7 @@ function App() {
       </Routes>
     </TemperatureProvider>
     </CityProvider>
+    </ThemeProvider>
     </>
   )
 }
