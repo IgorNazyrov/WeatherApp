@@ -1,21 +1,22 @@
 .container {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 0rem 10px;
+  padding: 0.5rem 10px 0.5rem 10px;
   display: grid;
   grid-template-columns: 1fr auto auto;
   grid-template-rows: 1fr 1fr;
+  align-items: center;
 }
 @media (min-width: 768px) {
   .container {
-    padding: 0rem 40px;
+    padding: 0.5rem 40px 0.5rem 40px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
   }
 }
 @media (min-width: 1024px) {
   .container {
-    padding: 0rem 70px;
+    padding: 0.5rem 70px 0.5rem 70px;
   }
 }
 .container .logoContainer {
@@ -56,10 +57,14 @@
   -ms-user-select: none;
   color: #006adb;
   border-radius: 5px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.2rem;
+  margin-top: 0.2rem;
 }
 .container .logoContainer .headerDarkLogo {
   color: #f0f0f0;
+}
+.container .usersTools {
+  display: none;
 }
 @media (min-width: 768px) {
   .container .usersTools {

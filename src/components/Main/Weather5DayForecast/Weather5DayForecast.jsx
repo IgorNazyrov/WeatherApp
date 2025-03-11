@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import WeatherIcon from "../../../WeatherIcon/WeatherIcon"
+import WeatherIcon from "../../WeatherIcon/WeatherIcon"
 
 export default function Weather5DayForecast ({data, }) {
   const getDayOfWeek = (dateString) => {

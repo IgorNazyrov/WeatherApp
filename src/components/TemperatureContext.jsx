@@ -20,7 +20,7 @@ export const TemperatureProvider = ({children}) => {
       return `${celsiusTemperature}°C`
     } else {
       const fahrenheitTemperature = (celsiusTemperature * 9 / 5) + 32
-      return `${fahrenheitTemperature}  `
+      return `${fahrenheitTemperature}°F`
     }
   }
   return (

@@ -1,7 +1,10 @@
-import { useState, useEffect, } from "react";
+import { useState, useEffect, useContext} from "react";
+import { TemperatureContext } from "../../TemperatureContext";
 
 export default function WeatherNow({ data }) {
+  const {temperature, getTemperature} = useContext(TemperatureContext)
   const [foresactNow, setForecastNow] = useState(null);
+  console.log(new Date)
 
   const proccesWeatherNow = () => {
     if (!data || !data.list) {
@@ -32,12 +35,14 @@ export default function WeatherNow({ data }) {
           minute: "2-digit",
         }),
         temperature: closestForecast.main.temp,
-        weather: closestForecast.weather[0].main,
+        temperatureFeels: closestForecast.main.feels_like,
+        weather: closestForecast.weather[0].description,
         humidity: closestForecast.main.humidity,
         windSpeed: closestForecast.wind.speed,
         pressure: closestForecast.main.pressure,
         visibility: closestForecast.visibility,
         city: data.city.name,
+
       };
       console.log("Прогноз сейчас: ", weatherNow);
       setForecastNow(weatherNow)
@@ -52,17 +57,28 @@ export default function WeatherNow({ data }) {
       proccesWeatherNow(data)
     }
   }, [data]);
+
+  const today = new Date()
+  const dayOfWeek = today.toLocaleDateString('ru-Ru', {weekday: 'short'})
+  const dateString = today.toLocaleDateString('ru-RU', {day: 'numeric', month: 'short'})
+  const timeString = today.toLocaleTimeString('ru-RU', {hour: 'numeric', minute: 'numeric'})
+  const timeDate =`${dayOfWeek}  ${dateString}  ${timeString}`  
   return (
     <>
-      {/* {foresactNow ? (
-        <div className="city">
-          <p>{foresactNow.city}</p>
-          <p>{new Date()}</p>
-        </div>
+      {foresactNow ? (
         <div>
-          {foresactNow.temperature}
+          <div>{timeDate.toUpperCase()}</div>
+          <div>{foresactNow.city} {foresactNow.weather}, {getTemperature(Math.round(foresactNow.temperature - 273))}</div>
+          <div>ПО ОЩУЩЕНИЮ {getTemperature(Math.round(foresactNow.temperature - 273))}, ВЕТЕР: {foresactNow.windSpeed} М/С</div>
+          {/* <div className="city">
+            <p>{foresactNow.city}</p>
+            <p>{new Date()}</p>
+          </div>
+          <div>
+            {foresactNow.temperature}
+          </div> */}
         </div>
-      ) : ''} */}
+      ) : ''}
     </>
   );
 }

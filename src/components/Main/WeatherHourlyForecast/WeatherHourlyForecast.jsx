@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react"
-import WeatherIcon from "../../../WeatherIcon/WeatherIcon"
+import WeatherIcon from "../../WeatherIcon/WeatherIcon"
 
 export default function WeatherHourlyForecast ({data, }) {
   const [hourlyForecast, setHourlyForecast] = useState([])

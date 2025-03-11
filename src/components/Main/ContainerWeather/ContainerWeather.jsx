@@ -1,9 +1,8 @@
 import { useState, useEffect, useContext } from "react";
-import ReverseGeocode from "../../../services/ReverseGeocode";
 import { CityContext } from "../../CityContext";
-import Weather5DayForecast from "./Weather5DayForecast/Weather5DayForecast";
-import WeatherHourlyForecast from "./WeatherHourlyForecast/WeatherHourlyForecast";
-import WeatherNow from "./WeatherNow/WeatherNow";
+import Weather5DayForecast from "../Weather5DayForecast/Weather5DayForecast";
+import WeatherHourlyForecast from "../WeatherHourlyForecast/WeatherHourlyForecast";
+import WeatherNow from "../WeatherNow/WeatherNow";
 
 export default function ContainerWeatherNow () {
   const [data, setData] = useState(null)
