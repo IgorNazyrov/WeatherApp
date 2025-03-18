@@ -1,0 +1,12 @@
+.containerHourly {
+  margin: 0px 10px;
+}
+@media (min-width: 768px) {
+  .containerHourly {
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    margin: 15px 7vw 0 7vw;
+  }
+}
+.containerHourly .listHourlyForecasts {
+  display: flex;
+}/*# sourceMappingURL=WeatherHourlyForecast.module.css.map */

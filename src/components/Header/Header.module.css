@@ -8,7 +8,7 @@
 }
 @media (min-width: 768px) {
   .container {
-    padding: 0.5rem 40px 0.5rem 40px;
+    padding: 1vh 7vw 1vh 7vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -16,7 +16,7 @@
 }
 @media (min-width: 1024px) {
   .container {
-    padding: 0.5rem 70px 0.5rem 70px;
+    padding: 1vh 7vw 1vh 7vw;
   }
 }
 .container .logoContainer {

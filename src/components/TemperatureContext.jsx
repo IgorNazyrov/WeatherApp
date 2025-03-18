@@ -17,10 +17,22 @@ export const TemperatureProvider = ({children}) => {
 
   const getTemperature = (celsiusTemperature) => {
     if (temperature === 'celsius') {
-      return `${celsiusTemperature}°C`
+      if (celsiusTemperature === 0) {
+        return `${celsiusTemperature}°C`
+      } else if (celsiusTemperature < 0) {
+        return `${celsiusTemperature}°C`
+      } else {
+        return `+${celsiusTemperature}°C`
+      }
     } else {
       const fahrenheitTemperature = (celsiusTemperature * 9 / 5) + 32
-      return `${fahrenheitTemperature}°F`
+      if (fahrenheitTemperature === 0) {
+        return `${fahrenheitTemperature}°F`
+      } else if (fahrenheitTemperature < 0) {
+        return `-${fahrenheitTemperature}°F`
+      } else {
+        return `${fahrenheitTemperature}°F`
+      }
     }
   }
   return (

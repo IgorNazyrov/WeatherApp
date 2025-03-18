@@ -1,0 +1,108 @@
+@import '../../../styles/mixins';
+
+.containerWeatherNow {
+  margin: 0px 10px;
+
+    @include media('tablet') {
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+      grid-template-rows: auto auto auto auto auto;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+      margin: 15px 7vw 0 7vw;
+    }
+
+    .timeDate {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @include media('tablet') {
+        grid-row: 1 / 2;
+        grid-column: 1 / 2;
+      }
+    }
+
+    .temperature {
+      display: flex;
+      justify-content: center;
+      @include font(OpenSans-Medium, 4rem, 500, 1.6);
+
+      
+      @include media('tablet') {
+        grid-row: 2 / 3;
+        grid-column: 4 / 5;
+      }
+    }
+
+    .temperatureFeels {
+      display: flex;
+      justify-content: center;
+
+      @include media('tablet') {
+        display: none;
+      }
+    }
+
+    .containerWeather {
+      
+      @include media('tablet') {
+        grid-row: 1 / 2;
+        grid-column: 4 / 5;
+      }
+
+      .containerWeatherIcon {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      .weatherDescription {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 30px;
+
+        @include media('tablet') {
+          margin-bottom: 0px;
+        }
+      }
+    }
+
+
+    .listItems {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      @include font(OpenSans-Medium, 0.9rem, 500, 1.6);
+
+      @include media('tablet') {
+        margin-bottom: 10px;
+        grid-row: 3 / 4;
+        grid-column: 1 / 5;
+      }
+
+      .item {
+        
+        .itemTitle {
+          
+        }
+
+        .itemInformation {
+          display: flex;
+          align-items: flex-end;
+  
+          .itemValue {
+            font-size: 1.4rem;
+            @include font(Montserrat-Bold, 1.4rem, 700, 1.6)
+          }
+
+          .itemCharacteristic {
+            margin-left: 4px;
+            line-height: 1;
+            margin-bottom: 9px;
+          }
+        }
+
+      }
+    }
+}

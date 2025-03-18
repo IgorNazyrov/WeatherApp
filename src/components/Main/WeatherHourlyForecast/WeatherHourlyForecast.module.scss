@@ -1,0 +1,32 @@
+@import '../../../styles/mixins';
+
+.containerHourly {
+  margin: 0px 10px;
+  
+  @include media('tablet') {
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    margin: 15px 7vw 0 7vw;
+  }
+
+  .h2Hourly {
+
+  }
+
+  .listHourlyForecasts {
+    display: flex;
+
+    .hourlyForecast {
+
+      .hourlyDate {
+
+      }
+
+      .hourlyWeatherIcon {
+      }
+
+      .hourlyTemperature {
+
+      }
+    }
+  }
+}

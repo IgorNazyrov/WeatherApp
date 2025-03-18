@@ -5,44 +5,47 @@ import WeatherHourlyForecast from "../WeatherHourlyForecast/WeatherHourlyForecas
 import WeatherNow from "../WeatherNow/WeatherNow";
 
 export default function ContainerWeatherNow () {
-  const [data, setData] = useState(null)
-  const [geoDataCity, setGeoDataCity] = useState('')
-  const [city, setCity] = useState('')
-  const {textCity, setTextCity} = useContext(CityContext)
-  const apiKey = '0e5372bc6b4f344b57d639dda586c32f'
+  const [hourlyForecast, setHourlyForecast] = useState([])
   
+  const procces24HourForecast = useCallback(() => {
+    const now = new Date()
+    const forecastEnd = new Date(now.getTime() + 24 * 60 * 60 * 1000)
+    const hourlyData = []
+  
+    if(!data || !data.list) {
+      console.error("Data не передалась")
+      return[]
+    }
+  
+    const relevantForecast = data.list.filter((item) => {
+      const itemDate = new Date(item.dt_txt)
+      return itemDate >= now && itemDate <= forecastEnd
+    })
+  
+    if (relevantForecast.length > 0) {
+      relevantForecast.forEach((forecast) => {
+        hourlyData.push({
+          time: new Date(forecast.dt_txt).toLocaleTimeString("ru-Ru", {
+            hour: "2-digit",
+            minute: "2-digit" 
+          }),
+          temperature: forecast.main.temp,
+          weather: forecast.weather[0].main,
+        })
+      })
+    } else {
+      console.warn('нет прогнозов на следующие 24 часа')
+      return []
+    }
+
+    console.log('Прогноз на 24 часа: ', hourlyData)
+    return hourlyData
+  })
+
   useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        async (position) => {
-          const latitude = position.coords.latitude
-          const longitude = position.coords.longitude
-          fetchData(latitude, longitude)
-        }
-      )
-    }
-
-    const fetchData = async (latitude, longitude) => {
-      try {
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&lang=ru&appid=${apiKey}`)
-        if (!response.ok) {
-          throw new Error(`Ошибка с API: ${response.status} ${response.statusText}`)
-        }
-        const dataCity = await response.json()
-        setData(dataCity)
-      } catch (error) {
-        console.log(error.message)
-      }
-    }
-
-  }, [])
+    const forecast = procces24HourForecast()
+    setHourlyForecast(forecast)
+  }, [data])
   
   console.log(data)
-  return (
-    <>
-      {data ? <WeatherNow data={data}/> : ''}
-      {data ? <WeatherHourlyForecast data={data}/> : ''}
-      {data ? <Weather5DayForecast data={data}/> : ''}
-    </>
-  )
 }

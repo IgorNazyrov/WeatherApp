@@ -10,14 +10,14 @@
   align-items: center;
 
   @include media('tablet') { 
-    padding: 0.5rem 40px 0.5rem 40px;
+    padding: 1vh 7vw 1vh 7vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
     
   @include media('laptop') {
-    padding: 0.5rem 70px 0.5rem 70px;
+    padding: 1vh 7vw 1vh 7vw;
   }
     
     .logoContainer {

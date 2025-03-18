@@ -1,6 +1,6 @@
 import styles from './WeatherIcon.module.css'
 
-export default function WeatherIcon ({weather, fontSize}) {
+export default function WeatherIcon ({weather, width}) {
   const weatherIcons = {
     Clear: (
       <svg
@@ -256,7 +256,7 @@ export default function WeatherIcon ({weather, fontSize}) {
 const icon = weatherIcons[weather] || weatherIcons.Default
 
   return (
-    <div style={{fontSize: fontSize, display: 'inline-block'}}>
+    <div className={styles.svgContainer} style={{width: width, display: 'inline-block'}}>
       {icon}
     </div>
   )
