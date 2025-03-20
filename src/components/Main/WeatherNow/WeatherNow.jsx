@@ -88,7 +88,7 @@ export default function WeatherNow({ data }) {
           </div>
           <div className={styles.containerWeather}>
             <div className={styles.containerWeatherIcon}>
-              <WeatherIcon weather={foresactNow.weather} />
+              <WeatherIcon width={'5rem'} weather={foresactNow.weather} />
             </div>
             <div className={styles.weatherDescription}>{foresactNow.weatherDescription}</div>
           </div>

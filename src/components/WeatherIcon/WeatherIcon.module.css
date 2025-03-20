@@ -3,7 +3,6 @@
   display: inline-block;
   width: 2em;
   height: 2em;
-  border: 1px solid red;
   fill: #006adb;
 }
 
@@ -14,6 +13,9 @@
 }
 
 .svgContainer {
-  /* width: 5rem; */
 
+}
+
+.yellowIcon {
+  fill: #ffa600;
 }

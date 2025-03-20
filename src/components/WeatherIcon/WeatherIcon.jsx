@@ -4,24 +4,67 @@ export default function WeatherIcon ({weather, width}) {
   const weatherIcons = {
     Clear: (
       <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        stroke="#000000"
-      >
-        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-        <g id="SVGRepo_iconCarrier">
-          <g clipPath="url(#a)" fill="#f1c40f">
-            <path className={styles.blueIcon} d="M12 0a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V1a1 1 0 0 1 1-1ZM0 12a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1ZM21 11a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2h-2ZM13 21a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0v-2ZM6.343 17.657a1 1 0 0 1 0 1.414L4.93 20.485a1 1 0 1 1-1.414-1.414l1.414-1.414a1 1 0 0 1 1.414 0ZM20.485 3.515a1 1 0 0 1 0 1.414l-1.414 1.414a1 1 0 1 1-1.414-1.414l1.414-1.414a1 1 0 0 1 1.414 0ZM3.515 3.515a1 1 0 0 1 1.414 0l1.414 1.414A1 1 0 1 1 4.93 6.343L3.515 4.93a1 1 0 0 1 0-1.414ZM17.657 17.657a1 1 0 0 1 1.414 0l1.414 1.414a1 1 0 1 1-1.414 1.414l-1.414-1.414a1 1 0 0 1 0-1.414ZM5 12a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z"></path>
-          </g>
-          <defs>
-            <clipPath id="a">
-              <path fill="#ffffff" d="M0 0h24v24H0z"></path>
-            </clipPath>
-          </defs>
+      version="1.1"
+      id="_x32_"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      viewBox="0 0 512 512"
+      xmlSpace="preserve"
+    >
+      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+      <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+      <g id="SVGRepo_iconCarrier">
+        <g>
+          <path
+            className={styles.yellowIcon}
+            d="M256,118.125c-76.156,0-137.875,61.719-137.875,137.875S179.844,393.875,256,393.875 S393.875,332.156,393.875,256S332.156,118.125,256,118.125z"
+          ></path>
+          <rect
+            x="235.906"
+            className={styles.yellowIcon}
+            width="40.156"
+            height="77.297"
+          ></rect>
+          <rect
+            x="235.906"
+            y="434.703"
+            className={styles.yellowIcon}
+            width="40.156"
+            height="77.297"
+          ></rect>
+          <rect
+            x="63.657"
+            y="82.229"
+            transform="matrix(0.7071 0.7071 -0.7071 0.7071 102.3047 -42.376)"
+            className={styles.yellowIcon}
+            width="77.296"
+            height="40.15"
+          ></rect>
+          <polygon
+            className={styles.yellowIcon}
+            points="368.156,396.547 422.828,451.219 451.219,422.813 396.563,368.156 "
+          ></polygon>
+          <rect
+            y="235.906"
+            className={styles.yellowIcon}
+            width="77.281"
+            height="40.156"
+          ></rect>
+          <polygon
+            className={styles.yellowIcon}
+            points="434.688,235.922 434.688,276.078 512,276.063 512,235.906 "
+          ></polygon>
+          <polygon
+            className={styles.yellowIcon}
+            points="60.781,422.813 89.156,451.219 143.813,396.547 115.438,368.156 "
+          ></polygon>
+          <polygon
+            className={styles.yellowIcon}
+            points="451.219,89.156 422.813,60.781 368.156,115.438 396.563,143.844 "
+          ></polygon>
         </g>
-      </svg>
+      </g>
+    </svg>
     ),
     Clouds: (
       <svg
@@ -60,36 +103,36 @@ export default function WeatherIcon ({weather, width}) {
         <g id="SVGRepo_iconCarrier">
           <g>
             <path
-              className={styles.blueIcon}
+              className={styles.yellowIcon}
               d="M212.969,278.609c15.938-44.594,56.344-76.75,103.688-82.141c-15.469-44.016-57.375-75.5-106.656-75.5 c-62.438,0-113.109,50.594-113.109,113.047c0,29.781,11.531,56.859,30.375,77.078c21.672-20.156,50.734-32.547,82.672-32.547 C210.938,278.547,211.906,278.609,212.969,278.609z"
             ></path>
             <rect
               x="193.516"
               y="24.047"
-              className={styles.blueIcon}
+              className={styles.yellowIcon}
               width="32.938"
               height="63.406"
             ></rect>
             <polygon
-              className={styles.blueIcon}
+              className={styles.yellowIcon}
               points="117.984,118.734 73.156,73.906 49.859,97.188 94.688,142.031 "
             ></polygon>
             <rect
               y="217.563"
-              className={styles.blueIcon}
+              className={styles.yellowIcon}
               width="63.406"
               height="32.938"
             ></rect>
             <path
-              className={styles.blueIcon}
+              className={styles.yellowIcon}
               d="M49.859,370.844l23.266,23.328l17.578-17.594c2.766-14.109,7.969-27.344,15.219-39.266l-11.266-11.266 L49.859,370.844z"
             ></path>
             <polygon
-              className={styles.blueIcon}
+              className={styles.yellowIcon}
               points="370.125,97.188 346.813,73.891 302,118.734 325.281,142.031 "
             ></polygon>
             <path
-              className={styles.blueIcon}
+              className={styles.yellowIcon}
               d="M422.578,304.344c-9.234-42.828-47.281-74.922-92.859-74.922c-46.063,0-84.438,32.75-93.156,76.25 c-5.156-0.891-10.438-1.453-15.844-1.453c-50.75,0-91.875,41.125-91.875,91.859c0,50.75,41.125,91.875,91.875,91.875 c43.359,0,156.75,0,199.406,0c50.75,0,91.875-41.125,91.875-91.875C512,346.156,472.188,305.641,422.578,304.344z"
             ></path>
           </g>

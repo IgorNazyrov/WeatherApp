@@ -14,18 +14,37 @@
 
   .listHourlyForecasts {
     display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding-bottom: 10px;
 
     .hourlyForecast {
+      margin-right: 15px;
+      flex: 0 0 auto;
+      width: 80px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
 
       .hourlyDate {
-
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       .hourlyWeatherIcon {
       }
 
       .hourlyTemperature {
-
+        display:  flex;
+        justify-content: center;
+        align-items: center;
       }
     }
   }

@@ -9,4 +9,17 @@
 }
 .containerHourly .listHourlyForecasts {
   display: flex;
+}
+.containerHourly .listHourlyForecasts .hourlyForecast {
+  margin-right: 15px;
+}
+.containerHourly .listHourlyForecasts .hourlyForecast .hourlyDate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.containerHourly .listHourlyForecasts .hourlyForecast .hourlyTemperature {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=WeatherHourlyForecast.module.css.map */
