@@ -8,13 +8,18 @@ import Navigation from "./Navigation/Navigation";
 
 export default function Main({now, hourly, fiveDay,}) {
   const {textCity} = useContext(CityContext)
-  const { city: cityParam } = useParams();
+  const { city } = useParams();
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const apiKey = "0e5372bc6b4f344b57d639dda586c32f";
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
 
-  // Используем useCallback для мемоизации fetchData
+  useEffect(() => {
+    if (textCity !== '') {
+      navigate(`/weatherHourly/${textCity}`)
+    }
+  }, [textCity, navigate])
+
   const fetchData = useCallback(async (cityName) => {
     setIsLoading(true);
     try {
@@ -30,12 +35,11 @@ export default function Main({now, hourly, fiveDay,}) {
       console.log(dataCity);
       setData(dataCity);
       setIsLoading(false);
-      navigate(`/weatherHourly/${cityName}`); // Перенаправляем после успешной загрузки данных.
     } catch (error) {
       console.error(error.message);
       setIsLoading(false);
     }
-  }, [apiKey, navigate]);
+  }, []);
 
   const getGeolocationAndRedirect = useCallback(async () => {
     setIsLoading(true);
@@ -81,15 +85,14 @@ export default function Main({now, hourly, fiveDay,}) {
   }, [apiKey, navigate]);
 
   useEffect(() => {
-    // Вызываем fetchData только если textCity изменился и не является пустой строкой
     if (textCity && textCity !== '') {
       fetchData(textCity);
-    } else if (cityParam) {
-      fetchData(cityParam);
+    } else if (city) {
+      fetchData(city);
     } else {
       getGeolocationAndRedirect();
     }
-  }, [textCity, cityParam, fetchData, getGeolocationAndRedirect]);
+  }, [textCity, city, fetchData, getGeolocationAndRedirect]);
 
   if (isLoading) {
     return <p>Загрузка...</p>;

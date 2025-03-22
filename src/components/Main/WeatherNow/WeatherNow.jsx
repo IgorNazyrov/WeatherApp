@@ -7,10 +7,6 @@ export default function WeatherNow({ data }) {
   const { getTemperature } = useContext(TemperatureContext);
   const [foresactNow, setForecastNow] = useState(null);
 
-  const capitalize = (str) => {
-    return str.replace(/\b\w/g, (char) => char.toUpperCase());
-  };
-
   const proccesWeatherNow = () => {
     if (!data || !data.list) {
       console.error("Data не передалась");

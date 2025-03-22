@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import styles from './Navigation.module.css'
 import { TemperatureContext } from '../../TemperatureContext';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { ThemeContext } from '../../ThemeContext';
 
 export default function Navigation ({data}) {
@@ -9,6 +9,7 @@ export default function Navigation ({data}) {
   const [foresactNow, setForecastNow] = useState(null);
   const {theme} = useContext(ThemeContext)
   const location = useLocation()
+  const { city: cityParam } = useParams()
   
   const proccesWeatherNow = () => {
     if (!data || !data.list) {
@@ -34,17 +35,10 @@ export default function Navigation ({data}) {
 
     if (closestForecast) {
       const weatherNow = {
-        // time: new Date(closestForecast.dt_txt).toLocaleDateString("ru-Ru", {
-        //   hour: "2-digit",
-        //   minute: "2-digit",
-        // }),
         temperature: closestForecast.main.temp,
         temperatureFeels: closestForecast.main.feels_like,
         weather: closestForecast.weather[0].description,
-        // humidity: closestForecast.main.humidity,
         windSpeed: closestForecast.wind.speed,
-        // pressure: closestForecast.main.pressure,
-        // visibility: closestForecast.visibility,
         city: data.city.name,
 
       };
@@ -78,11 +72,11 @@ export default function Navigation ({data}) {
             <div className={styles.feelsLike}>ПО ОЩУЩЕНИЮ {getTemperature(Math.round(foresactNow.temperatureFeels - 273))}, ВЕТЕР: {foresactNow.windSpeed} М/С</div>
           </div>
           <div className={styles.containerH2Nav}>
-            <h2 className={styles.h2Title}>Погода в {foresactNow.city} сейчас</h2>
+            <h2 className={styles.h2Title}>Погода в {foresactNow.city} сегодня</h2>
             <div className={styles.containerLinks}> 
-              <Link className={`${styles.link} ${theme === 'light' ? '' : styles.linkDark} ${location.pathname.startsWith('/weatherNow/') ? styles.linkActive : ''}`} to={'/weatherNow/:city'}>Сейчас</Link>
-              <Link className={`${styles.link} ${theme === 'light' ? '' : styles.linkDark} ${location.pathname.startsWith('/weatherHourly/') ? styles.linkActive : ''}`} to={'/weatherHourly/:city'}>Сегодня</Link>
-              <Link className={`${styles.link} ${theme === 'light' ? '' : styles.linkDark} ${location.pathname.startsWith('/weather5DayForecast/') ? styles.linkActive : ''}`} to={'/weather5DayForecast/:city'}>5 дней</Link>
+              <Link className={`${styles.link} ${theme === 'light' ? '' : styles.linkDark} ${location.pathname.startsWith('/weatherNow/') ? styles.linkActive : ''}`} to={`/weatherNow/${cityParam}`}>Сейчас</Link>
+              <Link className={`${styles.link} ${theme === 'light' ? '' : styles.linkDark} ${location.pathname.startsWith('/weatherHourly/') ? styles.linkActive : ''}`} to={`/weatherHourly/${cityParam}`}>Сегодня</Link>
+              <Link className={`${styles.link} ${theme === 'light' ? '' : styles.linkDark} ${location.pathname.startsWith('/weather5DayForecast/') ? styles.linkActive : ''}`} to={`/weather5DayForecast/${cityParam}`}>5 дней</Link>
             </div>
           </div>
         </div>

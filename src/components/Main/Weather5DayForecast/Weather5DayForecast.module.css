@@ -1,0 +1,22 @@
+.container5Day {
+  margin: 0px 10px;
+}
+@media (min-width: 768px) {
+  .container5Day {
+    margin: 15px 7vw 0 7vw;
+  }
+}
+.container5Day .mySwiperClass {
+  display: flex;
+  justify-content: space-between;
+}
+.container5Day .list5DayForecasts {
+  display: flex;
+  justify-content: space-between;
+}
+.container5Day .list5DayForecasts .hourlyForecast {
+  width: 126px;
+  flex-shrink: 0;
+  padding: 10px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}/*# sourceMappingURL=Weather5DayForecast.module.css.map */

@@ -9,7 +9,14 @@
   }
 
   .h2Hourly {
+    @include media('tablet') {
+      padding: 25px 0px 0px 25px;
+    }
+  }
 
+  .mySwiperClass {
+    display: flex;
+    justify-content: space-between;
   }
 
   .listHourlyForecasts {
@@ -23,13 +30,19 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
     padding-bottom: 10px;
+    justify-content: space-between;
+
+
+    .swiper-wrapper {
+      display: flex;
+      justify-content: space-between;
+    }
 
     .hourlyForecast {
       margin-right: 15px;
       flex: 0 0 auto;
-      width: 80px;
+      width: 70px;
       padding: 10px;
-      border: 1px solid #ccc;
       box-sizing: border-box;
 
       .hourlyDate {
@@ -39,12 +52,26 @@
       }
 
       .hourlyWeatherIcon {
+        display: flex;
+        justify-content: center;
       }
 
       .hourlyTemperature {
         display:  flex;
         justify-content: center;
         align-items: center;
+      }
+    }
+
+    .hourlyForecast:first-child {
+      @include media('tablet') {
+        margin-left: 50px;
+      }
+    }
+
+    .hourlyForecast:last-child {
+      @include media('tablet') {
+        margin-right: 50px !important;
       }
     }
   }

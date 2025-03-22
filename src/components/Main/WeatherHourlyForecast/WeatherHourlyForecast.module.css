@@ -7,19 +7,59 @@
     margin: 15px 7vw 0 7vw;
   }
 }
+@media (min-width: 768px) {
+  .containerHourly .h2Hourly {
+    padding: 25px 0px 0px 25px;
+  }
+}
+.containerHourly .mySwiperClass {
+  display: flex;
+  justify-content: space-between;
+}
 .containerHourly .listHourlyForecasts {
   display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding-bottom: 10px;
+  justify-content: space-between;
+}
+.containerHourly .listHourlyForecasts::-webkit-scrollbar {
+  display: none;
+}
+.containerHourly .listHourlyForecasts .swiper-wrapper {
+  display: flex;
+  justify-content: space-between;
 }
 .containerHourly .listHourlyForecasts .hourlyForecast {
   margin-right: 15px;
+  flex: 0 0 auto;
+  width: 70px;
+  padding: 10px;
+  box-sizing: border-box;
 }
 .containerHourly .listHourlyForecasts .hourlyForecast .hourlyDate {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.containerHourly .listHourlyForecasts .hourlyForecast .hourlyWeatherIcon {
+  display: flex;
+  justify-content: center;
+}
 .containerHourly .listHourlyForecasts .hourlyForecast .hourlyTemperature {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+@media (min-width: 768px) {
+  .containerHourly .listHourlyForecasts .hourlyForecast:first-child {
+    margin-left: 50px;
+  }
+}
+@media (min-width: 768px) {
+  .containerHourly .listHourlyForecasts .hourlyForecast:last-child {
+    margin-right: 50px !important;
+  }
 }/*# sourceMappingURL=WeatherHourlyForecast.module.css.map */

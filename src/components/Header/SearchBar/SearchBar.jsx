@@ -3,7 +3,7 @@ import styles from "./SearchBar.module.css";
 import { CityContext } from "../../CityContext";
 
 export default function SearchBar() {
-  const { textCity, setTextCity } = useContext(CityContext);
+  const { setTextCity } = useContext(CityContext);
   const [inputValue, setInputValue] = useState('')
 
   const handleKeyDown = (e) => {

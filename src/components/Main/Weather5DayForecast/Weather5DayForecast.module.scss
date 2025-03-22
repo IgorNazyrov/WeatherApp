@@ -1,0 +1,49 @@
+@import '../../../styles/mixins';
+
+.container5Day {
+  margin: 0px 10px;
+
+  @include media('tablet') {
+    margin: 15px 7vw 0 7vw;
+  }
+
+  .h2Title {
+
+  }
+
+  .mySwiperClass {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .list5DayForecasts {
+    display: flex;
+    justify-content: space-between;
+
+    .hourlyForecast {
+      width: 126px;
+      flex-shrink: 0;
+      padding: 10px;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+
+      .date5Day {
+
+      }
+
+      .weatherIcon5Day {
+
+      }
+
+      .temperature5Day {
+
+        .maxTemp {
+
+        }
+
+        .minTemp {
+
+        }
+      }
+    }
+  }
+}
