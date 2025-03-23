@@ -57,7 +57,7 @@ export default function Navigation ({data}) {
   const navigate = useNavigate()
   
   const handleLinkClick = (path) => {
-    navigate(`/${path}?parametr=${Date.now()}`)
+    navigate(`/${path}?parameter=${Date.now()}`)
   }
 
   return (
