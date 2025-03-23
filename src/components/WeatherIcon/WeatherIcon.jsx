@@ -1,74 +1,82 @@
-import styles from './WeatherIcon.module.css'
+import styles from "./WeatherIcon.module.css";
+import { useContext } from "react";
+import { ThemeContext } from "../ThemeContext";
 
-export default function WeatherIcon ({weather, width}) {
+export default function WeatherIcon({ weather, width }) {
+  const { theme } = useContext(ThemeContext);
+
   const weatherIcons = {
     Clear: (
       <svg
-      version="1.1"
-      id="_x32_"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-      viewBox="0 0 512 512"
-      xmlSpace="preserve"
-    >
-      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-      <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-      <g id="SVGRepo_iconCarrier">
-        <g>
-          <path
-            className={styles.yellowIcon}
-            d="M256,118.125c-76.156,0-137.875,61.719-137.875,137.875S179.844,393.875,256,393.875 S393.875,332.156,393.875,256S332.156,118.125,256,118.125z"
-          ></path>
-          <rect
-            x="235.906"
-            className={styles.yellowIcon}
-            width="40.156"
-            height="77.297"
-          ></rect>
-          <rect
-            x="235.906"
-            y="434.703"
-            className={styles.yellowIcon}
-            width="40.156"
-            height="77.297"
-          ></rect>
-          <rect
-            x="63.657"
-            y="82.229"
-            transform="matrix(0.7071 0.7071 -0.7071 0.7071 102.3047 -42.376)"
-            className={styles.yellowIcon}
-            width="77.296"
-            height="40.15"
-          ></rect>
-          <polygon
-            className={styles.yellowIcon}
-            points="368.156,396.547 422.828,451.219 451.219,422.813 396.563,368.156 "
-          ></polygon>
-          <rect
-            y="235.906"
-            className={styles.yellowIcon}
-            width="77.281"
-            height="40.156"
-          ></rect>
-          <polygon
-            className={styles.yellowIcon}
-            points="434.688,235.922 434.688,276.078 512,276.063 512,235.906 "
-          ></polygon>
-          <polygon
-            className={styles.yellowIcon}
-            points="60.781,422.813 89.156,451.219 143.813,396.547 115.438,368.156 "
-          ></polygon>
-          <polygon
-            className={styles.yellowIcon}
-            points="451.219,89.156 422.813,60.781 368.156,115.438 396.563,143.844 "
-          ></polygon>
+        version="1.1"
+        id="_x32_"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 512 512"
+        xmlSpace="preserve"
+      >
+        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+          <g>
+            <path
+              className={styles.yellowIcon}
+              d="M256,118.125c-76.156,0-137.875,61.719-137.875,137.875S179.844,393.875,256,393.875 S393.875,332.156,393.875,256S332.156,118.125,256,118.125z"
+            ></path>
+            <rect
+              x="235.906"
+              className={styles.yellowIcon}
+              width="40.156"
+              height="77.297"
+            ></rect>
+            <rect
+              x="235.906"
+              y="434.703"
+              className={styles.yellowIcon}
+              width="40.156"
+              height="77.297"
+            ></rect>
+            <rect
+              x="63.657"
+              y="82.229"
+              transform="matrix(0.7071 0.7071 -0.7071 0.7071 102.3047 -42.376)"
+              className={styles.yellowIcon}
+              width="77.296"
+              height="40.15"
+            ></rect>
+            <polygon
+              className={styles.yellowIcon}
+              points="368.156,396.547 422.828,451.219 451.219,422.813 396.563,368.156 "
+            ></polygon>
+            <rect
+              y="235.906"
+              className={styles.yellowIcon}
+              width="77.281"
+              height="40.156"
+            ></rect>
+            <polygon
+              className={styles.yellowIcon}
+              points="434.688,235.922 434.688,276.078 512,276.063 512,235.906 "
+            ></polygon>
+            <polygon
+              className={styles.yellowIcon}
+              points="60.781,422.813 89.156,451.219 143.813,396.547 115.438,368.156 "
+            ></polygon>
+            <polygon
+              className={styles.yellowIcon}
+              points="451.219,89.156 422.813,60.781 368.156,115.438 396.563,143.844 "
+            ></polygon>
+          </g>
         </g>
-      </g>
-    </svg>
+      </svg>
     ),
     Clouds: (
       <svg
-      version="1.1"
+        version="1.1"
         id="_x32_"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -77,11 +85,17 @@ export default function WeatherIcon ({weather, width}) {
         fill="#000000"
       >
         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></g>
         <g id="SVGRepo_iconCarrier">
           <g>
             <path
-              className={styles.blueIcon}
+              className={`${styles.blueIcon} ${
+                theme === "light" ? "" : styles.darkBlueIcon
+              }`}
               d="M416.296,232.076c-0.042,0-0.079,0.009-0.121,0.009c0.056-1.594,0.121-3.187,0.121-4.79 c0-76.646-62.131-138.771-138.763-138.771c-71.785,0-130.854,54.521-138.03,124.419c-10.066-3.113-20.755-4.791-31.842-4.791 C48.207,208.152,0,256.354,0,315.814c0,59.46,48.207,107.662,107.662,107.662h308.634c52.852,0,95.704-42.842,95.704-95.695 C512,274.919,469.148,232.076,416.296,232.076z"
             ></path>
           </g>
@@ -99,7 +113,11 @@ export default function WeatherIcon ({weather, width}) {
         fill="#000000"
       >
         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></g>
         <g id="SVGRepo_iconCarrier">
           <g>
             <path
@@ -150,23 +168,35 @@ export default function WeatherIcon ({weather, width}) {
         fill="#000000"
       >
         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></g>
         <g id="SVGRepo_iconCarrier">
           <g>
             <path
-              className={styles.blueIcon}
+              className={`${styles.blueIcon} ${
+                theme === "light" ? "" : styles.darkBlueIcon
+              }`}
               d="M416.297,174.659c-0.047,0-0.084,0-0.121,0c0.056-1.594,0.121-3.178,0.121-4.791 c0-76.635-62.134-138.759-138.759-138.759c-71.789,0-130.848,54.52-138.024,124.417c-10.065-3.113-20.764-4.791-31.846-4.791 C48.211,150.735,0,198.936,0,258.395c0,59.458,48.211,107.66,107.669,107.66h308.628c52.852,0,95.703-42.842,95.703-95.703 C512,217.501,469.149,174.659,416.297,174.659z"
             ></path>
             <path
-              className={styles.blueIcon}
+              className={`${styles.blueIcon} ${
+                theme === "light" ? "" : styles.darkBlueIcon
+              }`}
               d="M96.905,453.445c0,15.162,12.293,27.446,27.456,27.446c15.162,0,27.455-12.283,27.455-27.446 c0-15.163-27.455-53.896-27.455-53.896S96.905,438.282,96.905,453.445z"
             ></path>
             <path
-              className={styles.blueIcon}
+              className={`${styles.blueIcon} ${
+                theme === "light" ? "" : styles.darkBlueIcon
+              }`}
               d="M230.456,453.445c0,15.162,12.301,27.446,27.455,27.446c15.173,0,27.456-12.283,27.456-27.446 c0-15.163-27.456-53.896-27.456-53.896S230.456,438.282,230.456,453.445z"
             ></path>
             <path
-              className={styles.blueIcon}
+              className={`${styles.blueIcon} ${
+                theme === "light" ? "" : styles.darkBlueIcon
+              }`}
               d="M364.024,453.445c0,15.162,12.283,27.446,27.455,27.446c15.154,0,27.456-12.283,27.456-27.446 c0-15.163-27.456-53.896-27.456-53.896S364.024,438.282,364.024,453.445z"
             ></path>
           </g>
@@ -184,51 +214,73 @@ export default function WeatherIcon ({weather, width}) {
         fill="#000000"
       >
         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></g>
         <g id="SVGRepo_iconCarrier">
           <g>
             <path
-              className={styles.blueIcon}
+              className={`${styles.blueIcon} ${
+                theme === "light" ? "" : styles.darkBlueIcon
+              }`}
               d="M402.308,131.026c-0.043,0-0.076,0-0.11,0c0.051-1.454,0.11-2.9,0.11-4.372 C402.308,56.705,345.603,0,275.655,0c-65.518,0-119.432,49.763-125.982,113.563c-9.187-2.841-18.953-4.373-29.068-4.373 c-54.262,0-98.267,43.996-98.267,98.268c0,54.271,44.005,98.267,98.267,98.267h281.702c48.241,0,87.354-39.105,87.354-87.353 C489.662,170.131,450.549,131.026,402.308,131.026z"
             ></path>
             <circle
-              className={styles.blueIcon}
+              className={`${styles.blueIcon} ${
+                theme === "light" ? "" : styles.darkBlueIcon
+              }`}
               cx="370.034"
               cy="362.889"
               r="16.715"
             ></circle>
             <circle
-              className={styles.blueIcon}
+              className={`${styles.blueIcon} ${
+                theme === "light" ? "" : styles.darkBlueIcon
+              }`}
               cx="258.914"
               cy="362.889"
               r="16.715"
             ></circle>
             <path
-              className={styles.blueIcon}
+              className={`${styles.blueIcon} ${
+                theme === "light" ? "" : styles.darkBlueIcon
+              }`}
               d="M147.801,379.604c9.221,0,16.707-7.486,16.707-16.716c0-9.23-7.486-16.715-16.707-16.715 c-9.23,0-16.715,7.485-16.715,16.715C131.086,372.119,138.571,379.604,147.801,379.604z"
             ></path>
             <circle
-              className={styles.blueIcon}
+              className={`${styles.blueIcon} ${
+                theme === "light" ? "" : styles.darkBlueIcon
+              }`}
               cx="320.646"
               cy="428.151"
               r="16.715"
             ></circle>
             <circle
-              className={styles.blueIcon}
+              className={`${styles.blueIcon} ${
+                theme === "light" ? "" : styles.darkBlueIcon
+              }`}
               cx="209.533"
               cy="428.151"
               r="16.715"
             ></circle>
             <path
-              className={styles.blueIcon}
+              className={`${styles.blueIcon} ${
+                theme === "light" ? "" : styles.darkBlueIcon
+              }`}
               d="M147.801,478.578c-9.23,0-16.715,7.485-16.715,16.706c0,9.23,7.485,16.716,16.715,16.716 c9.23,0,16.716-7.486,16.716-16.716C164.517,486.063,157.031,478.578,147.801,478.578z"
             ></path>
             <path
-              className={styles.blueIcon}
+              className={`${styles.blueIcon} ${
+                theme === "light" ? "" : styles.darkBlueIcon
+              }`}
               d="M258.922,478.578c-9.23,0-16.716,7.485-16.716,16.706c0,9.23,7.486,16.716,16.716,16.716 c9.229,0,16.715-7.486,16.715-16.716C275.637,486.063,268.151,478.578,258.922,478.578z"
             ></path>
             <path
-              className={styles.blueIcon}
+              className={`${styles.blueIcon} ${
+                theme === "light" ? "" : styles.darkBlueIcon
+              }`}
               d="M370.034,478.578c-9.221,0-16.707,7.485-16.707,16.706c0,9.23,7.486,16.716,16.707,16.716 c9.23,0,16.716-7.486,16.716-16.716C386.75,486.063,379.264,478.578,370.034,478.578z"
             ></path>
           </g>
@@ -249,23 +301,37 @@ export default function WeatherIcon ({weather, width}) {
         transform="rotate(0)matrix(1, 0, 0, 1, 0, 0)"
       >
         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" stroke="#CCCCCC" strokeWidth="6.144"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          stroke="#CCCCCC"
+          strokeWidth="6.144"
+        ></g>
         <g id="SVGRepo_iconCarrier">
           <g>
             <polygon
-              className={styles.blueIcon}
+              className={`${styles.blueIcon} ${
+                theme === "light" ? "" : styles.darkBlueIcon
+              }`}
               points="177.531,359.77 118.698,359.77 89.488,443.068 113.559,443.068 87.539,512 182.015,407.982 143.371,407.982 "
             ></polygon>
             <polygon
-              className={styles.blueIcon}
+              className={`${styles.blueIcon} ${
+                theme === "light" ? "" : styles.darkBlueIcon
+              }`}
               points="297.865,359.77 239.041,359.77 209.831,443.068 233.892,443.068 207.873,512 302.348,407.982 263.705,407.982 "
             ></polygon>
             <polygon
-              className={styles.blueIcon}
+              className={`${styles.blueIcon} ${
+                theme === "light" ? "" : styles.darkBlueIcon
+              }`}
               points="418.207,359.77 359.375,359.77 330.165,443.068 354.226,443.068 328.215,512 422.682,407.982 384.047,407.982 "
             ></polygon>
             <path
-              className={styles.blueIcon}
+              className={`${styles.blueIcon} ${
+                theme === "light" ? "" : styles.darkBlueIcon
+              }`}
               d="M410.535,138.393c-0.045,0-0.081,0-0.117,0c0.053-1.536,0.117-3.064,0.117-4.618 C410.535,59.892,350.641,0,276.759,0c-69.21,0-126.146,52.561-133.065,119.947c-9.704-3.001-20.018-4.618-30.701-4.618 c-57.323,0-103.792,46.47-103.792,103.793c0,57.322,46.469,103.792,103.792,103.792h297.542c50.952,0,92.265-41.303,92.265-92.265 C502.799,179.696,461.487,138.393,410.535,138.393z"
             ></path>
           </g>
@@ -274,7 +340,7 @@ export default function WeatherIcon ({weather, width}) {
     ),
     Default: (
       <svg
-      version="1.1"
+        version="1.1"
         id="_x32_"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -283,24 +349,32 @@ export default function WeatherIcon ({weather, width}) {
         fill="#000000"
       >
         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></g>
         <g id="SVGRepo_iconCarrier">
           <g>
             <path
-              className={styles.blueIcon}
+              className={`${styles.blueIcon} ${
+                theme === "light" ? "" : styles.darkBlueIcon
+              }`}
               d="M416.296,232.076c-0.042,0-0.079,0.009-0.121,0.009c0.056-1.594,0.121-3.187,0.121-4.79 c0-76.646-62.131-138.771-138.763-138.771c-71.785,0-130.854,54.521-138.03,124.419c-10.066-3.113-20.755-4.791-31.842-4.791 C48.207,208.152,0,256.354,0,315.814c0,59.46,48.207,107.662,107.662,107.662h308.634c52.852,0,95.704-42.842,95.704-95.695 C512,274.919,469.148,232.076,416.296,232.076z"
             ></path>
           </g>
         </g>
       </svg>
     ),
-  }
+  };
 
-const icon = weatherIcons[weather] || weatherIcons.Default
+  const icon = weatherIcons[weather] || weatherIcons.Default;
 
   return (
-    <div className={styles.svgContainer} style={{width: width, display: 'inline-block'}}>
+    <div
+      style={{ width: width, display: "inline-block" }}
+    >
       {icon}
     </div>
-  )
+  );
 }

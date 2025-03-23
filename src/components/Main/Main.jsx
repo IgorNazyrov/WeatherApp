@@ -6,22 +6,16 @@ import WeatherNow from "./WeatherNow/WeatherNow";
 import { useParams, useNavigate } from "react-router-dom";
 import Navigation from "./Navigation/Navigation";
 
+// типы пропсов не указаны из-за того что я ещё не изучил TypeScript, но я знаю об этой проблеме
+
 export default function Main({now, hourly, fiveDay,}) {
   const {textCity} = useContext(CityContext)
   const { city } = useParams();
   const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
   const apiKey = "0e5372bc6b4f344b57d639dda586c32f";
   const navigate = useNavigate(); 
 
-  useEffect(() => {
-    if (textCity !== '') {
-      navigate(`/weatherHourly/${textCity}`)
-    }
-  }, [textCity, navigate])
-
   const fetchData = useCallback(async (cityName) => {
-    setIsLoading(true);
     try {
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&lang=ru&appid=${apiKey}`
@@ -34,15 +28,12 @@ export default function Main({now, hourly, fiveDay,}) {
       const dataCity = await response.json();
       console.log(dataCity);
       setData(dataCity);
-      setIsLoading(false);
     } catch (error) {
       console.error(error.message);
-      setIsLoading(false);
     }
   }, []);
 
   const getGeolocationAndRedirect = useCallback(async () => {
-    setIsLoading(true);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         async (position) => {
@@ -66,21 +57,17 @@ export default function Main({now, hourly, fiveDay,}) {
               navigate(`/weatherHourly/${cityName}`);
             } else {
               console.warn("Не удалось определить город по геолокации");
-              setIsLoading(false);
             }
           } catch (error) {
             console.error("Ошибка при получении названия города:", error);
-            setIsLoading(false);
           }
         },
         (error) => {
           console.error("Ошибка геолокации:", error);
-          setIsLoading(false);
         }
       );
     } else {
       console.log("Геолокация не поддерживается браузером");
-      setIsLoading(false);
     }
   }, [apiKey, navigate]);
 
@@ -93,10 +80,6 @@ export default function Main({now, hourly, fiveDay,}) {
       getGeolocationAndRedirect();
     }
   }, [textCity, city, fetchData, getGeolocationAndRedirect]);
-
-  if (isLoading) {
-    return <p>Загрузка...</p>;
-  }
 
   return (
     <>

@@ -94,19 +94,21 @@ export default function Weather5DayForecast({ data }) {
             wrapperClass={styles.mySwiperClass}
           >
             {forecastData.map((forecast, index) => (
-              <SwiperSlide className={styles.hourlyForecast} key={index}>
-                <div className={styles.date5Day}>
-                  {getDayOfWeek(forecast.date)}
-                </div>
-                <div className={styles.weatherIcon5Day}>
-                  <WeatherIcon width={"55px"} weather={forecast.weather} />
-                </div>
-                <div className={styles.temperature5Day}>
-                  <div className={styles.maxTemp}>
-                    {getTemperature(Math.round(forecast.maxTemp - 273))}
+              <SwiperSlide className={styles.swiperSlide} key={index}>
+                <div className={styles.forecastContent}>
+                  <div className={styles.date5Day}>
+                    {getDayOfWeek(forecast.date)}
                   </div>
-                  <div className={styles.minTemp}>
-                    {getTemperature(Math.round(forecast.minTemp - 273))}
+                  <div className={styles.weatherIcon5Day}>
+                    <WeatherIcon width={"55px"} weather={forecast.weather} />
+                  </div>
+                  <div className={styles.temperature5Day}>
+                    <div className={styles.maxTemp}>
+                      {getTemperature(Math.round(forecast.maxTemp - 273))}  
+                    </div>
+                    <div className={styles.minTemp}>
+                      {getTemperature(Math.round(forecast.minTemp - 273))}
+                    </div>
                   </div>
                 </div>
               </SwiperSlide>

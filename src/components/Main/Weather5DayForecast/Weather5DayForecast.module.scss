@@ -5,10 +5,11 @@
 
   @include media('tablet') {
     margin: 15px 7vw 0 7vw;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
   }
 
   .h2Title {
-
+    padding: 25px 0px 0px 25px;
   }
 
   .mySwiperClass {
@@ -19,31 +20,60 @@
   .list5DayForecasts {
     display: flex;
     justify-content: space-between;
+    padding: 3px;
+    overflow-x: auto;
+    white-space: nowrap;
 
-    .hourlyForecast {
-      width: 126px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    .swiperSlide {
+      width: 150px;
       flex-shrink: 0;
-      padding: 10px;
-      box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-
-      .date5Day {
-
+      height: 148px;
+      
+      @include media('tablet') {
+        width: 180px;
+        margin-right: 20px !important;
       }
 
-      .weatherIcon5Day {
+      .forecastContent {
+        display: inline-block;
+        width: 100%;
+        border-radius: 6%;
 
-      }
 
-      .temperature5Day {
-
-        .maxTemp {
-
+        .date5Day {
+          display: flex;
+          justify-content: center;
         }
-
-        .minTemp {
-
+  
+        .weatherIcon5Day {
+          display: flex;
+          justify-content: center;
         }
+  
+        .temperature5Day {
+          display: flex;
+          justify-content: center;
+          .maxTemp {
+            margin-right: 15px;
+          }
+  
+          .minTemp {
+            
+          }
+
       }
+
+      }
+    }
+
+    .swiperSlide:last-child {
+      margin-right: 0px !important;
     }
   }
 }

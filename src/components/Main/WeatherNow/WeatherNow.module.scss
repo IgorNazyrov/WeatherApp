@@ -73,7 +73,7 @@
       display: flex;
       align-items: center;
       justify-content: space-around;
-      @include font(OpenSans-Medium, 0.9rem, 500, 1.6);
+      @include font(OpenSans-Medium, 0.8rem, 500, 1.6);
 
       @include media('tablet') {
         margin-bottom: 10px;

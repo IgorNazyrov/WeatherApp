@@ -1,15 +1,18 @@
 import { useContext, useState } from "react";
 import styles from "./SearchBar.module.css";
 import { CityContext } from "../../CityContext";
+import { useNavigate } from "react-router-dom";
 
 export default function SearchBar() {
   const { setTextCity } = useContext(CityContext);
   const [inputValue, setInputValue] = useState('')
+  const navigate = useNavigate()
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       setTextCity(inputValue);
       setInputValue('')
+      navigate(`/weatherHourly/${inputValue}`)
     }
   };
 

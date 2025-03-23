@@ -51,6 +51,10 @@
   box-sizing: border-box;
   background-color: rgb(226, 223, 223);
   color: #333;
+  cursor: pointer;
+  -moz-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
 }
 .containerNavigation .containerH2Nav .containerLinks .linkDark {
   color: #f0f0f0;
