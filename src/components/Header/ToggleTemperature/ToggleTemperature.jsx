@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import { TemperatureContext } from "../../TemperatureContext";
 import styles from './ToggleTemperature.module.css'
 

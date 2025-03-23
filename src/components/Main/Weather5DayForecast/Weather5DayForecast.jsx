@@ -44,7 +44,6 @@ export default function Weather5DayForecast({ data }) {
 
       if (dailyForecasts.length > 0) {
         const weather = dailyForecasts[0].weather[0].main;
-        console.log(weather);
         let minTemp = dailyForecasts[0].main.temp;
         let maxTemp = dailyForecasts[0].main.temp;
         dailyForecasts.forEach((forecast) => {
@@ -68,8 +67,7 @@ export default function Weather5DayForecast({ data }) {
         dailyData.push(null);
       }
     }
-    console.log(data);
-    console.log(dailyData);
+    // console.log(dailyData);
     return dailyData;
   }, [data]);
 
@@ -106,7 +104,7 @@ export default function Weather5DayForecast({ data }) {
                     <div className={styles.maxTemp}>
                       {getTemperature(Math.round(forecast.maxTemp - 273))}  
                     </div>
-                    <div className={styles.minTemp}>
+                    <div>
                       {getTemperature(Math.round(forecast.minTemp - 273))}
                     </div>
                   </div>

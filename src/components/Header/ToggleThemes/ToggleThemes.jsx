@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import Moon from "../../../Icons/Moon/Moon";
 import styles from "../../../Icons/Moon/Moon.module.css";
 import { useContext } from "react";

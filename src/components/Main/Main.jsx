@@ -12,7 +12,7 @@ export default function Main({now, hourly, fiveDay,}) {
   const {textCity} = useContext(CityContext)
   const { city } = useParams();
   const [data, setData] = useState(null);
-  const apiKey = "0e5372bc6b4f344b57d639dda586c32f";
+  const apiKey = import.meta.env.VITE_API_KEY
   const navigate = useNavigate(); 
 
   const fetchData = useCallback(async (cityName) => {
@@ -26,12 +26,12 @@ export default function Main({now, hourly, fiveDay,}) {
         );
       }
       const dataCity = await response.json();
-      console.log(dataCity);
+      // console.log(dataCity);
       setData(dataCity);
     } catch (error) {
       console.error(error.message);
     }
-  }, []);
+  }, [apiKey]);
 
   const getGeolocationAndRedirect = useCallback(async () => {
     if (navigator.geolocation) {
@@ -51,7 +51,7 @@ export default function Main({now, hourly, fiveDay,}) {
               );
             }
             const geoData = await response.json();
-            console.log(geoData);
+            // console.log(geoData);
             if (geoData && geoData.length > 0 && geoData[0].name) {
               const cityName = geoData[0].name;
               navigate(`/weatherHourly/${cityName}`);

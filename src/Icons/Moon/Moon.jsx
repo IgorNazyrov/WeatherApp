@@ -1,4 +1,3 @@
-import React from "react";
 import styles from './Moon.module.css'
 
 const Moon = ({ className, color, onClick, ...props}) => {

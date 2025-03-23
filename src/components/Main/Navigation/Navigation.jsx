@@ -1,17 +1,15 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useCallback } from 'react';
 import styles from './Navigation.module.css'
-import { TemperatureContext } from '../../TemperatureContext';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { ThemeContext } from '../../ThemeContext';
 
 export default function Navigation ({data}) {
-  const {getTemperature} = useContext(TemperatureContext)
   const [foresactNow, setForecastNow] = useState(null);
   const {theme} = useContext(ThemeContext)
   const location = useLocation()
   const { city: cityParam } = useParams()
   
-  const proccesWeatherNow = () => {
+  const proccesWeatherNow = useCallback(() => {
     if (!data || !data.list) {
       console.error("Data не передалась");
       return null;
@@ -42,41 +40,30 @@ export default function Navigation ({data}) {
         city: data.city.name,
 
       };
-      console.log("Прогноз сейчас: ", weatherNow);
+      // console.log("Прогноз сейчас: ", weatherNow);
       setForecastNow(weatherNow)
     } else {
       console.warn("Нет прогнозов");
       setForecastNow(null)
     }
-  };
+  }, [data])
 
   useEffect(() => {
     if (data) {
       proccesWeatherNow(data)
     }
-  }, [data]);
-
-  const today = new Date()
-  const dayOfWeek = today.toLocaleDateString('ru-Ru', {weekday: 'short'})
-  const dateString = today.toLocaleDateString('ru-RU', {day: 'numeric', month: 'short'})
-  const timeString = today.toLocaleTimeString('ru-RU', {hour: 'numeric', minute: 'numeric'})
-  const timeDate =`${dayOfWeek}  ${dateString}  ${timeString}`
+  }, [data, proccesWeatherNow]);
 
   const navigate = useNavigate()
   
   const handleLinkClick = (path) => {
-    navigate(`/${path}?dummy=${Date.now()}`)
+    navigate(`/${path}?parametr=${Date.now()}`)
   }
 
   return (
     <>
       {foresactNow ? (
         <div className={styles.containerNavigation}>
-          {/* <div className={styles.containerShortNowWeather}>
-            <div className={styles.timeDate}>{timeDate.toUpperCase()}</div>
-            <div className={styles.cityWeatherTemperature}>{foresactNow.city} {foresactNow.weather}, {getTemperature(Math.round(foresactNow.temperature - 273))}</div>
-            <div className={styles.feelsLike}>ПО ОЩУЩЕНИЮ {getTemperature(Math.round(foresactNow.temperatureFeels - 273))}, ВЕТЕР: {foresactNow.windSpeed} М/С</div>
-          </div> */}
           <div className={styles.containerH2Nav}>
             <h2 className={styles.h2Title}>Погода в {foresactNow.city} сегодня</h2>
             <div className={styles.containerLinks}> 

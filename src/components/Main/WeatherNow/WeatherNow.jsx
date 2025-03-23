@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useCallback } from "react";
 import { TemperatureContext } from "../../TemperatureContext";
 import styles from "./WeatherNow.module.css";
 import WeatherIcon from "../../WeatherIcon/WeatherIcon";
@@ -7,7 +7,7 @@ export default function WeatherNow({ data }) {
   const { getTemperature } = useContext(TemperatureContext);
   const [foresactNow, setForecastNow] = useState(null);
 
-  const proccesWeatherNow = () => {
+  const proccesWeatherNow = useCallback(() => {
     if (!data || !data.list) {
       console.error("Data не передалась");
       return null;
@@ -45,19 +45,19 @@ export default function WeatherNow({ data }) {
         visibility: closestForecast.visibility,
         city: data.city.name,
       };
-      console.log("Прогноз сейчас: ", weatherNow);
+      // console.log("Прогноз сейчас: ", weatherNow);
       setForecastNow(weatherNow);
     } else {
       console.warn("Нет прогнозов");
       setForecastNow(null);
     }
-  };
+  }, [data])
 
   useEffect(() => {
     if (data) {
       proccesWeatherNow(data);
     }
-  }, [data]);
+  }, [data, proccesWeatherNow]);
 
   const today = new Date();
   const dayOfWeek = today.toLocaleDateString("ru-Ru", { weekday: "short" });

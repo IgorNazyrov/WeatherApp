@@ -41,7 +41,7 @@ export default function WeatherHourlyForecast({ data }) {
       return [];
     }
 
-    console.log("Прогноз на 24 часа: ", hourlyData);
+    // console.log("Прогноз на 24 часа: ", hourlyData);
     return hourlyData;
   }, [data]);
 

@@ -1,8 +1,48 @@
-# React + Vite
+# Мой проект
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Этот проект представляет собой погодное приложение, которое использует React, React-Router-Dom и API OpenWeatherMap для отображения информации о погоде в любом городе мира.
 
-Currently, two official plugins are available:
+![Скриншот светлой темы](public/Дизайн%20светлая%20тема.png)
+![Скриншот тёмной темы](public/Дизайн%20тёмная%20тема.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Установка
+
+1.  Клонируй репозиторий:
+
+    ```bash
+    git clone https://github.com/username/my-awesome-project.git
+    ```
+2.  Скачать зависимости:
+
+    ```bash
+    npm install
+    ```
+3.  Создай файл `.env` и добавь в него твой OpenWeatherMap API key:
+
+    ```
+    VITE_API_KEY=your_api_key
+    ```
+4.  Запустите приложение:
+
+    ```bash
+    npm start
+    ```
+
+## Использование
+
+    1. Введите название города в строку поиска.
+    2. Нажмите Enter.
+    3. Информация о погоде в городе будет отображена на странице.
+
+## Технологии
+
+    *   React
+    *   SCSS
+    *   React-Router
+    *   OpenWeatherMap API
+    *   Swiper
+    *   dotenv
+
+## Авторы
+
+    *   Назыров Игорь
