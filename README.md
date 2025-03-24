@@ -10,7 +10,7 @@
 1.  Клонируй репозиторий:
 
     ```bash
-    git clone 
+    git clone https://github.com/IgorNazyrov/WeatherAppDebug
     ```
 2.  Скачать зависимости:
 
