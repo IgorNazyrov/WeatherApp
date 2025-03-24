@@ -10,7 +10,7 @@
 1.  Клонируй репозиторий:
 
     ```bash
-    git clone https://github.com/username/my-awesome-project.git
+    git clone 
     ```
 2.  Скачать зависимости:
 
@@ -25,7 +25,7 @@
 4.  Запустите приложение:
 
     ```bash
-    npm start
+    npm run dev
     ```
 
 ## Использование
