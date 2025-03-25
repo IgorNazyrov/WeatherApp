@@ -7,7 +7,6 @@ import { default as rollUpUrl } from '@rollup/plugin-url';
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-console.log('apappapa')
 
 export default defineConfig({
   plugins: [

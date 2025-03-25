@@ -9,7 +9,7 @@ export default function SearchBar() {
   const navigate = useNavigate()
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && inputValue !== '') {
       setTextCity(inputValue);
       setInputValue('')
       navigate(`/weatherHourly/${inputValue}`)
