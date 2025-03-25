@@ -1,0 +1,100 @@
+.containerWeatherNow {
+  margin: 0px 10px;
+}
+@media (min-width: 768px) {
+  .containerWeatherNow {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    margin: 15px 7vw 0 7vw;
+  }
+}
+.containerWeatherNow .timeDate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 768px) {
+  .containerWeatherNow .timeDate {
+    grid-row: 1/2;
+    grid-column: 1/2;
+  }
+}
+.containerWeatherNow .temperature {
+  display: flex;
+  justify-content: center;
+  font-family: OpenSans-Medium, sans-serif;
+  font-size: 4rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+@media (min-width: 768px) {
+  .containerWeatherNow .temperature {
+    grid-row: 2/3;
+    grid-column: 4/5;
+  }
+}
+.containerWeatherNow .temperatureFeels {
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: 768px) {
+  .containerWeatherNow .temperatureFeels {
+    display: none;
+  }
+}
+@media (min-width: 768px) {
+  .containerWeatherNow .containerWeather {
+    grid-row: 1/2;
+    grid-column: 4/5;
+  }
+}
+.containerWeatherNow .containerWeather .containerWeatherIcon {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.containerWeatherNow .containerWeather .weatherDescription {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+@media (min-width: 768px) {
+  .containerWeatherNow .containerWeather .weatherDescription {
+    margin-bottom: 0px;
+  }
+}
+.containerWeatherNow .listItems {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-family: OpenSans-Medium, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+@media (min-width: 768px) {
+  .containerWeatherNow .listItems {
+    margin-bottom: 10px;
+    grid-row: 3/4;
+    grid-column: 1/5;
+  }
+}
+.containerWeatherNow .listItems .item .itemInformation {
+  display: flex;
+  align-items: flex-end;
+}
+.containerWeatherNow .listItems .item .itemInformation .itemValue {
+  font-size: 1.4rem;
+  font-family: Montserrat-Bold, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.6;
+}
+.containerWeatherNow .listItems .item .itemInformation .itemCharacteristic {
+  margin-left: 4px;
+  line-height: 1;
+  margin-bottom: 9px;
+}/*# sourceMappingURL=WeatherNow.module.css.map */

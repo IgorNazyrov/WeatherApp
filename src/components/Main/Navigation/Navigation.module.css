@@ -1,0 +1,71 @@
+.containerNavigation {
+  padding: 0px 10px;
+}
+@media (min-width: 768px) {
+  .containerNavigation {
+    padding: 1vh 7vw 1vh 7vw;
+  }
+}
+@media (min-width: 1024px) {
+  .containerNavigation {
+    padding: 0px 7vw;
+  }
+}
+.containerNavigation .containerShortNowWeather {
+  margin-top: 8px;
+}
+@media (min-width: 768px) {
+  .containerNavigation .containerShortNowWeather {
+    display: none;
+  }
+}
+.containerNavigation .containerShortNowWeather .timeDate {
+  font-family: Montserrat-Bold, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.containerNavigation .containerShortNowWeather .cityWeatherTemperature {
+  font-family: Montserrat-Bold, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.containerNavigation .containerShortNowWeather .feelsLike {
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.containerNavigation .containerH2Nav .h2Title {
+  margin: 0.9rem 0;
+}
+.containerNavigation .containerH2Nav .containerLinks {
+  display: flex;
+  margin: 0.9rem 0;
+}
+.containerNavigation .containerH2Nav .containerLinks .link {
+  margin-right: 25px;
+  text-decoration: none;
+  border: 1px solid #a1a0a0;
+  border-radius: 6px;
+  padding: 2px 5px;
+  box-sizing: border-box;
+  background-color: rgb(226, 223, 223);
+  color: #333;
+  cursor: pointer;
+  -moz-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+}
+.containerNavigation .containerH2Nav .containerLinks .linkDark {
+  color: #f0f0f0;
+  background-color: rgb(73, 73, 73);
+}
+.containerNavigation .containerH2Nav .containerLinks .linkActive {
+  border-top: 0px;
+  border-bottom: 3px solid #a1a0a0;
+  border-left: 0px;
+  border-right: 0px;
+}
+.containerNavigation .containerH2Nav .containerLinks .link:last-child {
+  margin-right: 0px;
+}/*# sourceMappingURL=Navigation.module.css.map */

@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "Montserrat-Bold", serif;
+  font-weight: 700;
+  font-style: normal;
+  src: url("../fonts/AnyConv.com__Montserrat-Bold.woff2") format("woff2"), url("../fonts/AnyConv.com__Montserrat-Bold.woff") format("woff"), url("../fonts/AnyConv.com__Montserrat-Bold.eot") format("eot");
+  font-display: swap;
+}
+@font-face {
+  font-family: "OpenSans-Medium", serif;
+  font-weight: 500;
+  font-style: normal;
+  src: url("../fonts/AnyConv.com__OpenSans-Medium.woff2") format("woff2"), url("../fonts/AnyConv.com__OpenSans-Medium.woff") format("woff"), url("../fonts/AnyConv.com__OpenSans-Medium.eot") format("eot");
+  font-display: swap;
+}
+@font-face {
+  font-family: "OpenSans-Regular", serif;
+  font-weight: 400;
+  font-style: normal;
+  src: url("../fonts/AnyConv.com__OpenSans-Regular.woff2") format("woff2"), url("../fonts/AnyConv.com__OpenSans-Regular.woff") format("woff"), url("../fonts/AnyConv.com__OpenSans-Regular.eot") format("eot");
+  font-display: swap;
+}/*# sourceMappingURL=fonts.css.map */
