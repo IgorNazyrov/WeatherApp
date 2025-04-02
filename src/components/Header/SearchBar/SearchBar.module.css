@@ -6,7 +6,7 @@
   background-position: 5px center;
   background-size: 20px;
   -moz-user-select: none;
-  user-select: none;
+       user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
   font-size: 1.1rem;
@@ -17,6 +17,7 @@
   box-sizing: border-box;
   grid-row: 2/3;
   grid-column: 1/4;
+  background-color: white;
 }
 
 @media (min-width: 768px) {

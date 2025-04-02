@@ -1,7 +1,7 @@
 .containerTemperature {
   cursor: pointer;
   -moz-user-select: none;
-  user-select: none;
+       user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
   font-size: 20px;
