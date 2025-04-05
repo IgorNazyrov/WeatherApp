@@ -2,7 +2,7 @@
 
 Этот проект представляет собой погодное приложение, которое использует React, React-Router-Dom и API OpenWeatherMap для отображения информации о погоде в любом городе мира.
 
-## Демо: [https://weather-app72.netlify.app/](https://weather-app72.netlify.app/)
+## Демо: [https://igornazyrov.github.io/WeatherApp/](https://igornazyrov.github.io/WeatherApp/)
 
 ![Скриншот светлой темы](public/Дизайн%20светлая%20тема.png)
 ![Скриншот тёмной темы](public/Дизайн%20тёмная%20тема.png)

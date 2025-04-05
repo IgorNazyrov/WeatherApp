@@ -23,7 +23,12 @@ export default defineConfig(({ mode }) => {
         limit: Infinity,
         publicPath: '/',
       }),
+      
     ],
+    base: '/WeatherApp/',
+    build: {
+      outDir: 'dist',
+    },
     css: {
       // additionalData: `@import "${path.resolve(__dirname, 'src/styles/_mixins.scss')}";`  ,
     },
