@@ -11,14 +11,13 @@ import { FiveDayForecastItem, WeatherItem } from "types";
 
 const Weather5DayForecast: FC<WeatherItem> = ({ data }) => {
   const temperatureUnit = useSelector((state: RootState) => state.temperature.unit) 
+  const [forecastData, setForecastData] = useState<FiveDayForecastItem[]>([]);
 
   const getDayOfWeek = (dateString: string) => {
     const date = new Date(dateString);
     const options: Intl.DateTimeFormatOptions = { weekday: "long" };
     return date.toLocaleDateString("ru-RU", options);
   };
-
-  const [forecastData, setForecastData] = useState<FiveDayForecastItem[]>([]);
 
   const processForecastData = useCallback(() => {
     const dailyData = [];

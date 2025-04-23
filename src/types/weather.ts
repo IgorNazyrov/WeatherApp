@@ -13,7 +13,7 @@ export interface WeatherItem {
         pressure: number;
       };
       weather: Array<{
-        main: string;
+        main: 'Clear' | 'Clouds' | 'ScatteredClouds' | 'Rain' | 'Snow' | 'Thunderstorm' | 'Default';
         description: string;
       }>;
       wind: {
@@ -44,7 +44,7 @@ export interface WeatherForecast {
   }
   visibility: number,
   weather: Array<{
-    main: string,
+    main: 'Clear' | 'Clouds' | 'ScatteredClouds' | 'Rain' | 'Snow' | 'Thunderstorm' | 'Default',
     description: string,
   }>
   wind: {
@@ -57,7 +57,7 @@ export interface WeatherNowData {
   temperature: number;
   temperatureFeels: number;
   weatherDescription: string;
-  weather: string;
+  weather: 'Clear' | 'Clouds' | 'ScatteredClouds' | 'Rain' | 'Snow' | 'Thunderstorm' | 'Default';
   humidity: number;
   windSpeed: number;
   pressure: number;
@@ -74,12 +74,12 @@ export interface GeoData {
 export interface HourlyForecastItem {
   time: string;
   temperature: number;
-  weather: string;
+  weather: 'Clear' | 'Clouds' | 'ScatteredClouds' | 'Rain' | 'Snow' | 'Thunderstorm' | 'Default';
 }
 
 export interface FiveDayForecastItem {
   date: string,
-  weather: string,
+  weather: 'Clear' | 'Clouds' | 'ScatteredClouds' | 'Rain' | 'Snow' | 'Thunderstorm' | 'Default',
   maxTemp: number,
   minTemp: number,
 }
