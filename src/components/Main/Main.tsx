@@ -1,21 +1,27 @@
-import { useState, useEffect, useContext, useCallback } from "react";
-import { CityContext } from "../CityContext";
+import { useState, useEffect, useCallback, FC,  } from "react";
 import Weather5DayForecast from "./Weather5DayForecast/Weather5DayForecast";
 import WeatherHourlyForecast from "./WeatherHourlyForecast/WeatherHourlyForecast";
 import WeatherNow from "./WeatherNow/WeatherNow";
 import { useParams, useNavigate } from "react-router-dom";
 import Navigation from "./Navigation/Navigation";
+import { useSelector } from "react-redux";
+import { WeatherData, GeoData, } from "types";
+import { RootState } from "app/store";
 
-// типы пропсов не указаны из-за того что я ещё не изучил TypeScript, но я знаю об этой проблеме
+interface MainProps {
+  now?: boolean,
+  hourly?: boolean,
+  fiveDay?: boolean,
+}
 
-export default function Main({now, hourly, fiveDay,}) {
-  const {textCity} = useContext(CityContext)
-  const { city } = useParams();
-  const [data, setData] = useState(null);
-  const apiKey = import.meta.env.VITE_API_KEY
-  const navigate = useNavigate(); 
+const Main: FC<MainProps> = ({now, hourly, fiveDay,}) => {
+  const textCity = useSelector((state: RootState) => state.city.name)
+  const { city } = useParams<{city?: string}>();
+  const [data, setData] = useState<WeatherData | null>(null);
+  const apiKey = import.meta.env.VITE_API_KEY as string
+  const navigate = useNavigate();
 
-  const fetchData = useCallback(async (cityName) => {
+  const fetchData = useCallback(async (cityName: string) => {
     try {
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&lang=ru&appid=${apiKey}`
@@ -26,10 +32,10 @@ export default function Main({now, hourly, fiveDay,}) {
         );
       }
       const dataCity = await response.json();
-      // console.log(dataCity);
+      console.log(dataCity);
       setData(dataCity);
     } catch (error) {
-      console.error(error.message);
+      console.error(error instanceof Error ? error.message : 'unknown error');
     }
   }, [apiKey]);
 
@@ -50,7 +56,7 @@ export default function Main({now, hourly, fiveDay,}) {
                 `Ошибка с API: ${response.status} ${response.statusText}  `
               );
             }
-            const geoData = await response.json();
+            const geoData: GeoData[] = await response.json();
             // console.log(geoData);
             if (geoData && geoData.length > 0 && geoData[0].name) {
               const cityName = geoData[0].name;
@@ -63,7 +69,7 @@ export default function Main({now, hourly, fiveDay,}) {
           }
         },
         (error) => {
-          console.error("Ошибка геолокации:", error);
+          console.error("Ошибка геолокации:", error instanceof Error ? error.message : 'Unknown error');
         }
       );
     } else {
@@ -82,13 +88,13 @@ export default function Main({now, hourly, fiveDay,}) {
   }, [textCity, city, fetchData, getGeolocationAndRedirect]);
 
   return (
-    <>
       <main>
         {data ? <Navigation data={data}/> : ''}
         {data && now ? <WeatherNow data={data} /> : ''}
         {data && hourly ? <WeatherHourlyForecast data={data} /> : ''}
         {data && fiveDay ? <Weather5DayForecast data={data} /> : ''}
       </main>
-    </>
   );
 }
+
+export default Main

@@ -1,22 +1,23 @@
-import { useContext, useState } from "react";
+import { FC, useState } from "react";
 import styles from "./SearchBar.module.css";
-import { CityContext } from "../../CityContext";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { updateCity } from "../../../features/citySlice";
 
-export default function SearchBar() {
-  const { setTextCity } = useContext(CityContext);
-  const [inputValue, setInputValue] = useState('')
+const SearchBar: FC = () => {
+  const [inputValue, setInputValue] = useState<string>('')
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && inputValue !== '') {
-      setTextCity(inputValue);
+      dispatch(updateCity(inputValue))
       setInputValue('')
       navigate(`/weatherHourly/${inputValue}`)
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value)
   }
   return (
@@ -32,3 +33,5 @@ export default function SearchBar() {
     </>
   );
 }
+
+export default SearchBar

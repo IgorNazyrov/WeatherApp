@@ -41,9 +41,12 @@
     *   React
     *   SCSS
     *   React-Router
+    *   Redux-Toolkit
+    *   TypeScript
     *   OpenWeatherMap API
     *   Swiper
     *   dotenv
+
 
 ## Авторы
 

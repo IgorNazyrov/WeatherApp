@@ -1,9 +1,15 @@
+import { RootState } from "app/store";
 import styles from "./WeatherIcon.module.css";
-import { useContext } from "react";
-import { ThemeContext } from "../ThemeContext";
+import { useSelector } from "react-redux";
+import { FC } from "react";
 
-export default function WeatherIcon({ weather, width }) {
-  const { theme } = useContext(ThemeContext);
+interface WeatherIconProps {
+  weather: 'Clear' | 'Clouds' | 'ScatteredClouds' | 'Rain' | 'Snow' | 'Thunderstorm' | 'Default',
+  width?: string,
+}
+
+const WeatherIcon: FC<WeatherIconProps> = ({ weather, width }) => {
+  const theme = useSelector((state: RootState) => state.theme.current)
 
   const weatherIcons = {
     Clear: (
@@ -378,3 +384,5 @@ export default function WeatherIcon({ weather, width }) {
     </div>
   );
 }
+
+export default WeatherIcon

@@ -1,21 +1,24 @@
-import { useState, useEffect, useContext, useCallback } from "react";
+import { useState, useEffect, useCallback, FC } from "react";
 import WeatherIcon from "../../WeatherIcon/WeatherIcon";
 import styles from "./Weather5DayForecast.module.css";
-import { TemperatureContext } from "../../TemperatureContext";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y } from "swiper/modules";
 import "swiper/css";
+import { formatTemperature } from "../../../features/temperatureSlice";
+import { useSelector } from "react-redux";
+import { RootState } from "app/store";
+import { FiveDayForecastItem, WeatherItem } from "types";
 
-export default function Weather5DayForecast({ data }) {
-  const { getTemperature } = useContext(TemperatureContext);
+const Weather5DayForecast: FC<WeatherItem> = ({ data }) => {
+  const temperatureUnit = useSelector((state: RootState) => state.temperature.unit) 
 
-  const getDayOfWeek = (dateString) => {
+  const getDayOfWeek = (dateString: string) => {
     const date = new Date(dateString);
-    const options = { weekday: "long" };
+    const options: Intl.DateTimeFormatOptions = { weekday: "long" };
     return date.toLocaleDateString("ru-RU", options);
   };
 
-  const [forecastData, setForecastData] = useState([]);
+  const [forecastData, setForecastData] = useState<FiveDayForecastItem[]>([]);
 
   const processForecastData = useCallback(() => {
     const dailyData = [];
@@ -73,8 +76,8 @@ export default function Weather5DayForecast({ data }) {
 
   useEffect(() => {
     const data = processForecastData();
-    setForecastData(data);
-  }, [data, processForecastData]);
+    setForecastData(data.filter((item) => item !== null) as FiveDayForecastItem[]);
+  }, [data]);
 
   return (
     <>
@@ -102,10 +105,10 @@ export default function Weather5DayForecast({ data }) {
                   </div>
                   <div className={styles.temperature5Day}>
                     <div className={styles.maxTemp}>
-                      {getTemperature(Math.round(forecast.maxTemp - 273))}  
+                      {formatTemperature((forecast.maxTemp - 273), temperatureUnit)}  
                     </div>
                     <div>
-                      {getTemperature(Math.round(forecast.minTemp - 273))}
+                      {formatTemperature((forecast.minTemp - 273), temperatureUnit)}
                     </div>
                   </div>
                 </div>
@@ -119,3 +122,5 @@ export default function Weather5DayForecast({ data }) {
     </>
   );
 }
+
+export default Weather5DayForecast

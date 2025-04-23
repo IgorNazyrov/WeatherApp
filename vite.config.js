@@ -13,6 +13,8 @@ export default defineConfig(({ mode }) => {
 
   return {
     define: {
+      'procces.env': {},
+
       'import.meta.env.VITE_API_KEY': JSON.stringify(env.VITE_API_KEY),
     },
     plugins: [

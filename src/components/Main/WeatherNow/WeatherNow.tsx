@@ -1,22 +1,25 @@
-import { useState, useEffect, useContext, useCallback } from "react";
-import { TemperatureContext } from "../../TemperatureContext";
+import { useState, useEffect, useCallback, FC } from "react";
 import styles from "./WeatherNow.module.css";
 import WeatherIcon from "../../WeatherIcon/WeatherIcon";
+import { useSelector } from "react-redux";
+import { formatTemperature } from "../../../features/temperatureSlice";
+import { WeatherData, WeatherItem, WeatherForecast, WeatherNowData } from "types";
+import { RootState } from "app/store";
 
-export default function WeatherNow({ data }) {
-  const { getTemperature } = useContext(TemperatureContext);
-  const [foresactNow, setForecastNow] = useState(null);
+const WeatherNow: FC<WeatherItem> = ({ data }) => {
+  const temperatureUnit = useSelector((state: RootState) => state.temperature.unit)
+  const [forecastNow, setForecastNow] = useState<WeatherNowData | null>(null);
 
+  let closestForecast: WeatherForecast | null = null;
   const proccesWeatherNow = useCallback(() => {
     if (!data || !data.list) {
       console.error("Data не передалась");
-      return null;
+      return
     }
 
     const now = new Date();
     const forecasts = data.list;
 
-    let closestForecast = null;
     let minTimeDiff = Infinity;
 
     forecasts.forEach((forecast) => {
@@ -30,7 +33,7 @@ export default function WeatherNow({ data }) {
     });
 
     if (closestForecast) {
-      const weatherNow = {
+      const weatherNow: WeatherNowData = {
         time: new Date(closestForecast.dt_txt).toLocaleDateString("ru-Ru", {
           hour: "2-digit",
           minute: "2-digit",
@@ -54,8 +57,8 @@ export default function WeatherNow({ data }) {
   }, [data])
 
   useEffect(() => {
-    if (data) {
-      proccesWeatherNow(data);
+    if (data) { 
+      proccesWeatherNow();
     }
   }, [data, proccesWeatherNow]);
 
@@ -72,34 +75,34 @@ export default function WeatherNow({ data }) {
   const timeDate = `${dayOfWeek}  ${dateString}  ${timeString}`;
   return (
     <>
-      {foresactNow ? (
+      {forecastNow ? (
         <div className={styles.containerWeatherNow}>
           <div className={styles.timeDate}>{timeDate.toUpperCase()}</div>
           <div className={styles.temperature}>
-            {getTemperature(Math.round(foresactNow.temperature - 273))}
+            {formatTemperature((forecastNow.temperature - 273), temperatureUnit)}
           </div>
           <div className={styles.temperatureFeels}>
             По ощущению{" "}
-            {getTemperature(Math.round(foresactNow.temperatureFeels - 273))}
+            {formatTemperature((forecastNow.temperatureFeels - 273), temperatureUnit)}
           </div>
           <div className={styles.containerWeather}>
             <div className={styles.containerWeatherIcon}>
-              <WeatherIcon width={'5rem'} weather={foresactNow.weather} />
+              <WeatherIcon width={'5rem'} weather={forecastNow.weather} />
             </div>
-            <div className={styles.weatherDescription}>{foresactNow.weatherDescription}</div>
+            <div className={styles.weatherDescription}>{forecastNow.weatherDescription}</div>
           </div>
           <div className={styles.listItems}>
             <div className={styles.item}>
               <div className={styles.itemTitle}>Ветер</div>
               <div className={styles.itemInformation}>
-                <div className={styles.itemValue}>{foresactNow.windSpeed} </div>
+                <div className={styles.itemValue}>{forecastNow.windSpeed} </div>
                 <div className={styles.itemCharacteristic}>м/с</div>
               </div>
             </div>
             <div className={styles.item}>
               <div className={styles.itemTitle}>Давление</div>
               <div className={styles.itemInformation}>
-                <div className={styles.itemValue}>{foresactNow.pressure}</div>
+                <div className={styles.itemValue}>{forecastNow.pressure}</div>
                 <div className={styles.itemCharacteristic}>
                   мм. <br /> рт. ст.
                 </div>
@@ -108,14 +111,14 @@ export default function WeatherNow({ data }) {
             <div className={styles.item}>
               <div className={styles.itemTitle}>Влажность</div>
               <div className={styles.itemInformation}>
-                <div className={styles.itemValue}>{foresactNow.humidity}</div>
+                <div className={styles.itemValue}>{forecastNow.humidity}</div>
                 <div className={styles.itemCharacteristic}>%</div>
               </div>
             </div>
             <div className={styles.item}>
               <div className={styles.itemTitle}>Видимость</div>
               <div className={styles.itemInformation}>
-                <div className={styles.itemValue}>{foresactNow.visibility}</div>
+                <div className={styles.itemValue}>{forecastNow.visibility}</div>
                 <div className={styles.itemCharacteristic}>м</div>
               </div>
             </div>
@@ -127,3 +130,5 @@ export default function WeatherNow({ data }) {
     </>
   );
 }
+
+export default WeatherNow

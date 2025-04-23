@@ -1,19 +1,20 @@
-import SearchBar from "./SearchBar/SearchBar";
+import SearchBar from "./SearchBar/SearchBar"
 import ToggleThemes from "./ToggleThemes/ToggleThemes";
 import ToggleTemperature from "./ToggleTemperature/ToggleTemperature";
 import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
-import { useContext, useState, useEffect } from "react";
-import { ThemeContext } from "../ThemeContext";
+import { useState, useEffect, FC } from "react";
 import WeatherIcon from "../WeatherIcon/WeatherIcon";
+import { useSelector } from "react-redux";
+import { RootState } from "app/store";
 
-export default function Header() {
-  const { theme } = useContext(ThemeContext);
+const Header: FC = () => {
+  const theme = useSelector((state: RootState) => state.theme.current)
   const [isMobile, setIsMobile] = useState(window.matchMedia("(max-width: 767px)").matches);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 767px)")
-    const handleMediaChange = (event) => {
+    const handleMediaChange = (event: MediaQueryListEvent) => {
       setIsMobile(event.matches)
     }
 
@@ -56,3 +57,5 @@ export default function Header() {
     </>
   );
 }
+
+export default Header

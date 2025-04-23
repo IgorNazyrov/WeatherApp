@@ -1,32 +1,35 @@
-import { useState, useEffect, useCallback, useContext } from "react";
+import { useState, useEffect, useCallback, FC } from "react";
 import WeatherIcon from "../../WeatherIcon/WeatherIcon";
 import styles from "./WeatherHourlyForecast.module.css";
-import { TemperatureContext } from "../../TemperatureContext";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y } from "swiper/modules";
 import "swiper/css";
+import { useSelector } from "react-redux";
+import { formatTemperature } from "../../../features/temperatureSlice";
+import { RootState } from "app/store";
+import { HourlyForecastItem, WeatherForecast, WeatherItem } from "types";
 
-export default function WeatherHourlyForecast({ data }) {
-  const [hourlyForecast, setHourlyForecast] = useState([]);
-  const { getTemperature } = useContext(TemperatureContext);
+const WeatherHourlyForecast: FC<WeatherItem> = ({ data }) => {
+  const [hourlyForecast, setHourlyForecast] = useState<HourlyForecastItem[]>([]);
+  const temperatureUnit = useSelector((state: RootState) => state.temperature.unit)
 
   const procces24HourForecast = useCallback(() => {
     const now = new Date();
     const forecastEnd = new Date(now.getTime() + 24 * 60 * 60 * 1000);
-    const hourlyData = [];
+    const hourlyData: HourlyForecastItem[] = [];
 
     if (!data || !data.list) {
       console.error("Data не передалась");
       return [];
     }
 
-    const relevantForecast = data.list.filter((item) => {
+    const relevantForecast = data.list.filter((item: WeatherForecast) => {
       const itemDate = new Date(item.dt_txt);
       return itemDate >= now && itemDate <= forecastEnd;
     });
 
     if (relevantForecast.length > 0) {
-      relevantForecast.forEach((forecast) => {
+      relevantForecast.forEach((forecast: WeatherForecast) => {
         hourlyData.push({
           time: new Date(forecast.dt_txt).toLocaleTimeString("ru-Ru", {
             hour: "2-digit",
@@ -72,7 +75,7 @@ export default function WeatherHourlyForecast({ data }) {
                   <WeatherIcon width={"55px"} weather={forecast.weather} />
                 </div>
                 <div className={styles.hourlyTemperature}>
-                  {getTemperature(Math.round(forecast.temperature - 273))}
+                  {formatTemperature((forecast.temperature - 273), temperatureUnit)}
                 </div>
               </SwiperSlide>
             ))}
@@ -84,3 +87,5 @@ export default function WeatherHourlyForecast({ data }) {
     </>
   );
 }
+
+export default WeatherHourlyForecast
