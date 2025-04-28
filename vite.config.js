@@ -9,6 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default defineConfig(({ mode }) => {
+  // eslint-disable-next-line no-undef
   const env = loadEnv(mode, process.cwd(), '');
 
   return {
@@ -30,6 +31,7 @@ export default defineConfig(({ mode }) => {
     base: '/WeatherApp/',
     build: {
       outDir: 'dist',
+      emptyOutDir: true,
     },
     css: {
       // additionalData: `@import "${path.resolve(__dirname, 'src/styles/_mixins.scss')}";`  ,

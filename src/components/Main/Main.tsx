@@ -32,7 +32,7 @@ const Main: FC<MainProps> = ({now, hourly, fiveDay,}) => {
         );
       }
       const dataCity = await response.json();
-      console.log(dataCity);
+      // console.log(dataCity);
       setData(dataCity);
     } catch (error) {
       console.error(error instanceof Error ? error.message : 'unknown error');
