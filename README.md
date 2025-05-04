@@ -42,6 +42,7 @@
     *   SCSS
     *   React-Router
     *   Redux-Toolkit
+    *   RTK Query
     *   TypeScript
     *   OpenWeatherMap API
     *   Swiper
