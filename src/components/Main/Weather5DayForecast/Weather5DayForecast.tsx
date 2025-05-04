@@ -104,10 +104,10 @@ const Weather5DayForecast: FC<WeatherItem> = ({ data }) => {
                   </div>
                   <div className={styles.temperature5Day}>
                     <div className={styles.maxTemp}>
-                      {formatTemperature((forecast.maxTemp - 273), temperatureUnit)}  
+                      {formatTemperature((forecast.maxTemp), temperatureUnit)}  
                     </div>
                     <div>
-                      {formatTemperature((forecast.minTemp - 273), temperatureUnit)}
+                      {formatTemperature((forecast.minTemp), temperatureUnit)}
                     </div>
                   </div>
                 </div>

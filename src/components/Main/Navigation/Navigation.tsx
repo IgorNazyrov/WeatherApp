@@ -6,7 +6,7 @@ import { WeatherItem, NavigationItem, NavigationWeather } from 'types';
 import { RootState } from 'app/store';
 
 const Navigation: FC<WeatherItem> = ({data}) => {
-  const [foresactNow, setForecastNow] = useState<NavigationWeather | null>(null);
+  const [foresactNow, setForecastNow] = useState<NavigationWeather | null>(null)
   const theme = useSelector((state: RootState) => state.theme.current)
   const location = useLocation()
   const { city: cityParam } = useParams()
@@ -14,22 +14,22 @@ const Navigation: FC<WeatherItem> = ({data}) => {
   
   const proccesWeatherNow = useCallback(() => {
     if (!data || !data.list) {
-      console.error("Data не передалась");
+      console.error("Data не передалась")
       return null;
     }
 
-    const now = new Date();
-    const forecasts = data.list;
+    const now = new Date()
+    const forecasts = data.list
 
-    let minTimeDiff = Infinity;
+    let minTimeDiff = Infinity
 
     forecasts.forEach((forecast) => {
-      const itemDate = new Date(forecast.dt_txt);
-      const timeDiff = Math.abs(itemDate.getTime() - now.getTime());
+      const itemDate = new Date(forecast.dt_txt)
+      const timeDiff = Math.abs(itemDate.getTime() - now.getTime())
 
       if (timeDiff < minTimeDiff) {
-        minTimeDiff = timeDiff;
-        closestForecast = forecast;
+        minTimeDiff = timeDiff
+        closestForecast = forecast
       }
     });
 
@@ -44,7 +44,7 @@ const Navigation: FC<WeatherItem> = ({data}) => {
       // console.log("Прогноз сейчас: ", weatherNow);
       setForecastNow(weatherNow)
     } else {
-      console.warn("Нет прогнозов");
+      console.warn("Нет прогнозов")
       setForecastNow(null)
     }
   }, [data])
@@ -68,9 +68,9 @@ const Navigation: FC<WeatherItem> = ({data}) => {
           <div className={styles.containerH2Nav}>
             <h2 className={styles.h2Title}>Погода в {foresactNow.city} сегодня</h2>
             <div className={styles.containerLinks}> 
-              <div className={`${styles.link} ${theme === 'light' ? '' : styles.linkDark} ${location.pathname.startsWith('/weather5DayForecast/') ? styles.linkActive : ''}`} onClick={(e) => {e.preventDefault(); handleLinkClick(`weather5DayForecast/${cityParam}`)}}>5 дней</div>
               <div className={`${styles.link} ${theme === 'light' ? '' : styles.linkDark} ${location.pathname.startsWith('/weatherNow/') ? styles.linkActive : ''}`} onClick={(e) => {e.preventDefault(); handleLinkClick(`weatherNow/${cityParam}`)}}>Сейчас</div>
               <div className={`${styles.link} ${theme === 'light' ? '' : styles.linkDark} ${location.pathname.startsWith('/weatherHourly/') ? styles.linkActive : ''}`} onClick={(e) => {e.preventDefault(); handleLinkClick(`weatherHourly/${cityParam}`)}}>Сегодня</div>
+              <div className={`${styles.link} ${theme === 'light' ? '' : styles.linkDark} ${location.pathname.startsWith('/weather5DayForecast/') ? styles.linkActive : ''}`} onClick={(e) => {e.preventDefault(); handleLinkClick(`weather5DayForecast/${cityParam}`)}}>5 дней</div>
             </div>
           </div>
         </div>

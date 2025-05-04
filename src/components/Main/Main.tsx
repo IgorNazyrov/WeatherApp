@@ -7,6 +7,9 @@ import Navigation from "./Navigation/Navigation";
 import { useSelector } from "react-redux";
 import { WeatherData, GeoData, } from "types";
 import { RootState } from "app/store";
+import { 
+  useGetReverseGeokodingQuery, useGetWeatherByCityQuery, useLazyGetReverseGeokodingQuery, useLazyGetWeatherByCityQuery
+} from "../../features/weatherApi";
 
 interface MainProps {
   now?: boolean,
@@ -17,75 +20,49 @@ interface MainProps {
 const Main: FC<MainProps> = ({now, hourly, fiveDay,}) => {
   const textCity = useSelector((state: RootState) => state.city.name)
   const { city } = useParams<{city?: string}>();
-  const [data, setData] = useState<WeatherData | null>(null);
-  const apiKey = import.meta.env.VITE_API_KEY as string
   const navigate = useNavigate();
-
-  const fetchData = useCallback(async (cityName: string) => {
-    try {
-      const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&lang=ru&appid=${apiKey}`
-      );
-      if (!response.ok) {
-        throw new Error(
-          `Ошибка с API: ${response.status} ${response.statusText}`
-        );
-      }
-      const dataCity = await response.json();
-      // console.log(dataCity);
-      setData(dataCity);
-    } catch (error) {
-      console.error(error instanceof Error ? error.message : 'unknown error');
+  const { data } = useGetWeatherByCityQuery(
+    textCity || city || '',
+    {
+      skip: !textCity && !city,
+      refetchOnMountOrArgChange: true
     }
-  }, [apiKey]);
+  )
+  const [fetchGeoData] = useLazyGetReverseGeokodingQuery()
 
   const getGeolocationAndRedirect = useCallback(async () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        async (position) => {
-          const latitude = position.coords.latitude;
-          const longitude = position.coords.longitude;
-
-          try {
-            const response = await fetch(
-              `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${apiKey}`
-            );
-
-            if (!response.ok) {
-              throw new Error(
-                `Ошибка с API: ${response.status} ${response.statusText}  `
-              );
+    try {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          async (position) => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+  
+            const geoResult = await fetchGeoData({
+              lat: latitude,
+              lon: longitude
+            })
+            
+            if (geoResult.data?.[0]?.name) {
+              const cityName = geoResult.data[0].name
+              navigate(`/weatherHourly/${cityName}`)
             }
-            const geoData: GeoData[] = await response.json();
-            // console.log(geoData);
-            if (geoData && geoData.length > 0 && geoData[0].name) {
-              const cityName = geoData[0].name;
-              navigate(`/weatherHourly/${cityName}`);
-            } else {
-              console.warn("Не удалось определить город по геолокации");
-            }
-          } catch (error) {
-            console.error("Ошибка при получении названия города:", error);
           }
-        },
-        (error) => {
-          console.error("Ошибка геолокации:", error instanceof Error ? error.message : 'Unknown error');
-        }
-      );
-    } else {
-      console.log("Геолокация не поддерживается браузером");
+        )
+      } else {
+        console.log("Геолокация не поддерживается браузером");
+      }
+    } catch (err) {
+      console.error(`Ошибка в геолокации`)
     }
-  }, [apiKey, navigate]);
+  }, [navigate])
 
   useEffect(() => {
-    if (textCity && textCity !== '') {
-      fetchData(textCity);
-    } else if (city) {
-      fetchData(city);
-    } else {
-      getGeolocationAndRedirect();
+    if (!textCity && !city) {
+      getGeolocationAndRedirect()
     }
-  }, [textCity, city, fetchData, getGeolocationAndRedirect]);
+  }, [textCity, city]);
+
 
   return (
       <main>

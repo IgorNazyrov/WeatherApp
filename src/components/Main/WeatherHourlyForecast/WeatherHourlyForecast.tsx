@@ -75,7 +75,7 @@ const WeatherHourlyForecast: FC<WeatherItem> = ({ data }) => {
                   <WeatherIcon width={"55px"} weather={forecast.weather} />
                 </div>
                 <div className={styles.hourlyTemperature}>
-                  {formatTemperature((forecast.temperature - 273), temperatureUnit)}
+                  {formatTemperature((forecast.temperature), temperatureUnit)}
                 </div>
               </SwiperSlide>
             ))}

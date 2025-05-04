@@ -79,11 +79,11 @@ const WeatherNow: FC<WeatherItem> = ({ data }) => {
         <div className={styles.containerWeatherNow}>
           <div className={styles.timeDate}>{timeDate.toUpperCase()}</div>
           <div className={styles.temperature}>
-            {formatTemperature((forecastNow.temperature - 273), temperatureUnit)}
+            {formatTemperature((forecastNow.temperature), temperatureUnit)}
           </div>
           <div className={styles.temperatureFeels}>
             По ощущению{" "}
-            {formatTemperature((forecastNow.temperatureFeels - 273), temperatureUnit)}
+            {formatTemperature((forecastNow.temperatureFeels), temperatureUnit)}
           </div>
           <div className={styles.containerWeather}>
             <div className={styles.containerWeatherIcon}>
